@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Repository version="1.0">
+   <ScriptFile>
+      <FileName>SendImageToTelegram.js</FileName>
+      <Version>0.0.1</Version>
+      <Date>2025-03-17</Date>
+      <Author>Luca Bartek (The Space Koala)</Author>
+      <Description>Send Any Image Directly to Telegram via TG Bot</Description>
+      <URL>https://raw.githubusercontent.com/TheSpaceKoala/pixinsight_scripts/refs/heads/main/scripts/SendImageToTelegram.js</URL>
+   </ScriptFile>
+</Repository>
