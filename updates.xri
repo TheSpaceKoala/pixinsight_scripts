@@ -5,7 +5,7 @@
       The Space Koala PixInsight Scripts Repository
     </p>
   </description>
-  <platform os="all" arch="noarch" version="1.9.3">
+  <platform os="all" arch="noarch" version="1.6.9:1.9.3">
     <package fileName="SendImageToTelegram.zip"
              sha1="beb398f129a7967f69368a3df1723a32bf16d11a"
              type="script"
