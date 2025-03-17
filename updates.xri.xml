@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xri version="1.0">
+  <description>
+    <p>
+      The Space Koala PixInsight Scripts Repository
+    </p>
+  </description>
+  <platform os="all" arch="noarch" version="1.9.3">
+    <package fileName="SendImageToTelegram.zip"
+             sha1="beb398f129a7967f69368a3df1723a32bf16d11a"
+             type="script"
+             releaseDate="20250317">
+      <title>
+        Your Script Title
+      </title>
+      <description>
+        <p>
+          A brief description of your script's functionality.
+        </p>
+      </description>
+    </package>
+  </platform>
+</xri>
