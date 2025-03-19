@@ -7,7 +7,7 @@
   </description>
   <platform os="all" arch="noarch" version="1.6.9:1.9.3">
     <package fileName="TheSpaceKoalaScripts.zip"
-             sha1="9967772b6714d5b13f27b8a8cf385ed1ca23ec5e"
+             sha1="6dbb25f01c1354647682d9e636c1c563920ee8d7"
              type="script"
              releaseDate="20250319">
       <title>
