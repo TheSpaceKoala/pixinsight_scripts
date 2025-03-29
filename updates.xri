@@ -9,7 +9,7 @@
     <package fileName="TheSpaceKoalaScripts_20250319.zip"
              sha1="ff21d74f4e0a14afd25c0ae0f09dd7169cd09867"
              type="script"
-             releaseDate="20250319">
+             releaseDate="20250329">
       <title>
         Send Image to Telegram
       </title>
