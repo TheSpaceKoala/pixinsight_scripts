@@ -8,7 +8,7 @@
    <platform os="all" arch="noarch" version="1.8.9-2:1.9.99">
       <package fileName="TheSpaceKoalaScripts_20250401.zip" sha1="d0ba865e4ff0323cbf1138902a7d0603b10a9dc9" type="script" releaseDate="20250401">
          <title>
-        Send Image to Telegram
+        The Space Koala Script Repository
       </title>
          <description>
             <p>
@@ -18,4 +18,4 @@
       </package>
    </platform>
 </xri>
-<Signature developerId="Luca Bartek" timestamp="2025-04-01T18:27:49.508Z" encoding="Base64">UkY6wGhk2pv91prgFx8PHdMnwu6OGmAe47uc3gsem23DAtMw5nP7nPQhWo1z++XoiqOMjK5SFtITwcCoWwj2Cw==</Signature>
+<Signature developerId="Luca Bartek" timestamp="2025-04-01T18:51:39.493Z" encoding="Base64">ITso+VGx/3a4yuS5ATEDhh84bZB2klFbx+K+yHimLtcDLFKOFw5ftoT24tP+GhhR/GFuXzhNFDRFqX8KuoHoDw==</Signature>
