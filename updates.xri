@@ -6,16 +6,16 @@
     </p>
   </description>
   <platform os="all" arch="noarch" version="1.6.9:1.9.3">
-    <package fileName="TheSpaceKoalaScripts_20250319.zip"
-             sha1="ff21d74f4e0a14afd25c0ae0f09dd7169cd09867"
+    <package fileName="TheSpaceKoalaScripts_20250401.zip"
+             sha1="9fa3d1a7b6d46fd8bb3587e821bfe47152cab161"
              type="script"
-             releaseDate="20250329">
+             releaseDate="20250401">
       <title>
         Send Image to Telegram
       </title>
       <description>
         <p>
-          Send any image directly to Telegram
+          The Space Koala Script Repository
         </p>
       </description>
     </package>
