@@ -6,7 +6,7 @@
     </p>
    </description>
    <platform os="all" arch="noarch" version="1.8.9-2:1.9.99">
-      <package fileName="TheSpaceKoalaScripts_20250401.zip" sha1="b6935e2f4866a3e61fdb60a9b122fd846d6a92b8" type="script" releaseDate="20250401">
+      <package fileName="src.zip" sha1="f80a3dc739118be55bc46c27cf327170b186bd29" type="script" releaseDate="20250401">
          <title>
         The Space Koala Script Repository
       </title>
@@ -18,4 +18,3 @@
       </package>
    </platform>
 </xri>
-<Signature developerId="Luca Bartek" timestamp="2025-04-01T20:24:01.086Z" encoding="Base64">teG22zgoxTzAurncJbgYYBR9+g3KPmhIHuqsyWbH2bfN3Ok1YZNNkcBuYQAN71w3OVOS69o0KU3ApE4bOaeuCg==</Signature>
