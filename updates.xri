@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xri version="1.0">
-  <description>
-    <p>
+   <description>
+      <p>
       The Space Koala PixInsight Scripts Repository
     </p>
-  </description>
-  <platform os="all" arch="noarch" version="1.6.9:1.9.3">
-    <package fileName="TheSpaceKoalaScripts_20250401.zip"
-             sha1="050a44b87a05635f686a04a81ec878f239dba6e2"
-             type="script"
-             releaseDate="20250401">
-      <title>
+   </description>
+   <platform os="all" arch="noarch" version="1.6.9:1.9.3">
+      <package fileName="TheSpaceKoalaScripts_20250401.zip" sha1="050a44b87a05635f686a04a81ec878f239dba6e2" type="script" releaseDate="20250401">
+         <title>
         Send Image to Telegram
       </title>
-      <description>
-        <p>
+         <description>
+            <p>
           The Space Koala Script Repository
         </p>
-      </description>
-    </package>
-  </platform>
+         </description>
+      </package>
+   </platform>
 </xri>
+<Signature developerId="Luca Bartek" timestamp="2025-04-01T17:22:08.643Z" encoding="Base64">OfKWis72RmZCcUVYbwLQ4dggN1hsJ+9ME1U6Nyzo4noxHLLTBr7kWjmX6j3bC0efi4Qg4ZHpubL7aggt7Je7DA==</Signature>
