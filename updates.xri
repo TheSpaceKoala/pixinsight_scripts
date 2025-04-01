@@ -6,7 +6,7 @@
     </p>
    </description>
    <platform os="all" arch="noarch" version="1.8.9-2:1.9.99">
-      <package fileName="TheSpaceKoalaScripts_20250401.zip" sha1="64f366fbdd55bb458a3489a4b287a1410254b0cd" type="script" releaseDate="20250401">
+      <package fileName="TheSpaceKoalaScripts_20250401.zip" sha1="d0ba865e4ff0323cbf1138902a7d0603b10a9dc9" type="script" releaseDate="20250401">
          <title>
         Send Image to Telegram
       </title>
@@ -18,4 +18,4 @@
       </package>
    </platform>
 </xri>
-<Signature developerId="Luca Bartek" timestamp="2025-04-01T18:13:48.549Z" encoding="Base64">VnXchWKGDUeu9p+eyNxoAikwdSec5Fx2ex5RMR1YeuXUyI8aqfpsY5Gw3UiwAnkWkMzuYK83Mv8JtCZHLm5uCw==</Signature>
+<Signature developerId="Luca Bartek" timestamp="2025-04-01T18:23:52.461Z" encoding="Base64">0pdphomdED6H2a/RQ0ZB2o48ds4606vokX4dBFP74C1zabS/Ih3S+gV0SBSVdHIn8CVmh1+YKPJ/SD9vH2quBw==</Signature>
