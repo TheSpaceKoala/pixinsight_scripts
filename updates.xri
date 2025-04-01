@@ -6,7 +6,7 @@
     </p>
    </description>
    <platform os="all" arch="noarch" version="1.6.9:1.9.3">
-      <package fileName="TheSpaceKoalaScripts_20250401.zip" sha1="050a44b87a05635f686a04a81ec878f239dba6e2" type="script" releaseDate="20250401">
+      <package fileName="TheSpaceKoalaScripts_20250401.zip" sha1="f6d76c573384d5c6e8a41540927938a9fb428c27" type="script" releaseDate="20250401">
          <title>
         Send Image to Telegram
       </title>
