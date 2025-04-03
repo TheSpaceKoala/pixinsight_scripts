@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+********************************************************************
+PixInsight XML Process Serialization Module - XPSM 1.0
+********************************************************************
+Generated on 2025-04-03T09:29:09.380Z
+PixInsight Core 1.9.3 (x64)
+Copyright (c) 2003-2025 Pleiades Astrophoto
+********************************************************************
+-->
+<xpsm version="1.0" xmlns="http://www.pixinsight.com/xpsm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pixinsight.com/xpsm http://pixinsight.com/xpsm/xpsm-1.0.xsd">
+   <instance class="ProcessContainer" id="WBPP_instance">
+      <description>step=onCalibrationDone</description>
+      <instance class="IntegerResample" version="256" enabled="true">
+         <parameter id="zoomFactor" value="-2"/>
+         <parameter id="downsamplingMode" value="Average"/>
+         <parameter id="xResolution" value="72.000"/>
+         <parameter id="yResolution" value="72.000"/>
+         <parameter id="metric" value="false"/>
+         <parameter id="forceResolution" value="false"/>
+         <parameter id="gammaCorrection" value="false"/>
+         <parameter id="noGUIMessages" value="true"/>
+      </instance>
+      <instance class="ProcessContainer" enabled="true">
+         <description>step=onPostProcessDone</description>
+         <instance class="BlurXTerminator" version="256" enabled="true">
+            <parameter id="ai_file">BlurXTerminator.4.mlpackage</parameter>
+            <parameter id="correct_only" value="false"/>
+            <parameter id="correct_first" value="false"/>
+            <parameter id="nonstellar_then_stellar" value="false"/>
+            <parameter id="lum_only" value="false"/>
+            <parameter id="sharpen_stars" value="0.50"/>
+            <parameter id="adjust_halos" value="-0.01"/>
+            <parameter id="nonstellar_psf_diameter" value="0.00"/>
+            <parameter id="auto_nonstellar_psf" value="true"/>
+            <parameter id="sharpen_nonstellar" value="1.00"/>
+         </instance>
+      </instance>
+      <instance class="NoiseXTerminator" version="256" enabled="true">
+         <parameter id="ai_file">NoiseXTerminator.3.mlpackage</parameter>
+         <parameter id="enable_color_separation" value="false"/>
+         <parameter id="enable_frequency_separation" value="false"/>
+         <parameter id="denoise" value="0.50"/>
+         <parameter id="denoise_color" value="0.90"/>
+         <parameter id="denoise_lf" value="0.9"/>
+         <parameter id="denoise_lf_color" value="0.9"/>
+         <parameter id="frequency_scale" value="5.0"/>
+         <parameter id="iterations" value="2"/>
+         <parameter id="detail" value="0.15"/>
+      </instance>
+      <instance class="PixelMath" version="256" enabled="true">
+         <time start="2025-02-23T20:08:16.731Z" span="2.2321696"/>
+         <parameter id="expression">//autostretch
+c = min( max( 0, med( $T ) + C*1.4826*mdev( $T ) ), 1 );
+mtf( mtf( B, med( $T ) - c ), max( 0, ($T - c)/~c ) )</parameter>
+         <parameter id="expression1"></parameter>
+         <parameter id="expression2"></parameter>
+         <parameter id="expression3"></parameter>
+         <parameter id="useSingleExpression" value="true"/>
+         <parameter id="symbols">C = -2.8,
+B = 0.25,
+c</parameter>
+         <parameter id="clearImageCacheAndExit" value="false"/>
+         <parameter id="cacheGeneratedImages" value="false"/>
+         <parameter id="generateOutput" value="true"/>
+         <parameter id="singleThreaded" value="false"/>
+         <parameter id="optimization" value="true"/>
+         <parameter id="use64BitWorkingImage" value="false"/>
+         <parameter id="rescale" value="false"/>
+         <parameter id="rescaleLower" value="0"/>
+         <parameter id="rescaleUpper" value="1"/>
+         <parameter id="truncate" value="true"/>
+         <parameter id="truncateLower" value="0"/>
+         <parameter id="truncateUpper" value="1"/>
+         <parameter id="createNewImage" value="false"/>
+         <parameter id="showNewImage" value="true"/>
+         <parameter id="newImageId"></parameter>
+         <parameter id="newImageWidth" value="0"/>
+         <parameter id="newImageHeight" value="0"/>
+         <parameter id="newImageAlpha" value="false"/>
+         <parameter id="newImageColorSpace" value="SameAsTarget"/>
+         <parameter id="newImageSampleFormat" value="SameAsTarget"/>
+         <table id="outputData" rows="0"/>
+      </instance>
+   </instance>
+   <icon id="WBPP" instance="WBPP_instance" xpos="944" ypos="400" workspace="Workspace01"/>
+</xpsm>
