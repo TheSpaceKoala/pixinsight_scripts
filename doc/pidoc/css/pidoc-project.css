@@ -1,0 +1,16 @@
+/*
+ * PixInsight Reference Documentation System
+ *
+ * Style sheet for the PIProjectDoc documentation class
+ * Updated 2023 March 13
+ *
+ * Copyright (c) 2010-2023 Pleiades Astrophoto S.L. All Rights Reserved.
+ */
+
+body {
+   background-position: top left;
+   background-attachment: fixed;
+   background-repeat: no-repeat;
+   background-image: url( '../../pidoc/titles/pixinsight_project_documentation_title_vert.en.svg' );
+   background-size: 40px auto;
+}
