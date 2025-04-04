@@ -6,7 +6,7 @@
     </p>
    </description>
    <platform os="all" arch="noarch" version="1.8.9-2:1.9.99">
-      <package fileName="TheSpaceKoalaScripts_20250404.zip" sha1="f2aee4c0953a01831c616e12a5cb6ced1b21f366" type="script" releaseDate="20250403">
+      <package fileName="TheSpaceKoalaScripts_20250404.zip" sha1="f5bfc47c6630f667e652fcdbb6b47d46cb95c2aa" type="script" releaseDate="20250403">
          <title>
         The Space Koala Script Repository
       </title>
