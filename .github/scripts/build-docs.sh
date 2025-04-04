@@ -1,29 +1,29 @@
 #!/bin/bash
 set -e
 
-echo "🔄 Rebuilding docs folder..."
+echo "🔄 Rebuilding docs folder for GitHub Pages..."
 
-# Remove any existing docsForWebsite folder and create a new one
+# Remove any existing docs folder and create a new one
 rm -rf docs
 mkdir docs
 
-# Copy docs from doc/scripts into docsForWebsite
+# Copy docs from doc/scripts into docs
 for dir in doc/scripts/*; do
   name=$(basename "$dir")
   mkdir -p "docs/$name"
   cp -r "$dir"/* "docs/$name/"
 done
 
-# Copy docs from doc/docs into docsForWebsite
+# Copy docs from doc/docs into docs
 for dir in doc/docs/*; do
   name=$(basename "$dir")
   mkdir -p "docs/$name"
   cp -r "$dir"/* "docs/$name/"
 done
 
-echo "Docs copied to docs"
+echo "✅ Docs copied to docs"
 
-# Create an index.html file in docsForWebsite listing all subdirectories
+# Create an index.html file in docs listing all subdirectories
 echo "Creating index.html in docs..."
 (
   echo "<!DOCTYPE html>"
@@ -44,12 +44,18 @@ echo "Creating index.html in docs..."
   echo "  <h1>Documentation Index</h1>"
   echo "  <ul>"
   for d in docs/*/; do
-    dir=$(basename "$d")
-    echo "    <li><a href=\"$dir/\">$dir</a></li>"
+    folder=$(basename "$d")
+    # Assume the HTML file is named as the folder plus ".html"
+    htmlfile="${folder}.html"
+    if [ -f "docs/$folder/$htmlfile" ]; then
+      echo "    <li><a href=\"$folder/$htmlfile\">$folder</a></li>"
+    else
+      echo "    <li>$folder (No HTML file found)</li>"
+    fi
   done
   echo "  </ul>"
   echo "</body>"
   echo "</html>"
 ) > docs/index.html
 
-echo "Index created in docs"
+echo "✅ Index created in docs"
