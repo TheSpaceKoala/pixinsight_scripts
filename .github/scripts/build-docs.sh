@@ -3,27 +3,21 @@ set -e
 
 echo "🔄 Rebuilding docs folder for GitHub Pages..."
 
-# Remove any existing docs folder and create a new one
+# Remove any existing docs folder and create a new one.
 rm -rf docs
 mkdir docs
 
-# Copy docs from doc/scripts into docs
-for dir in doc/scripts/*; do
+# Copy all subdirectories from the original doc/ folder into docs.
+# This will copy subfolders such as doc/scripts, doc/docs, etc.
+for dir in doc/*/; do
   name=$(basename "$dir")
   mkdir -p "docs/$name"
   cp -r "$dir"/* "docs/$name/"
 done
 
-# Copy docs from doc/docs into docs
-for dir in doc/docs/*; do
-  name=$(basename "$dir")
-  mkdir -p "docs/$name"
-  cp -r "$dir"/* "docs/$name/"
-done
+echo "✅ All subdirectories from doc/ copied to docs."
 
-echo "✅ Docs copied to docs"
-
-# Create an index.html file in docs listing all subdirectories
+# Create an index.html file in docs that links to each subfolder's HTML file.
 echo "Creating index.html in docs..."
 (
   echo "<!DOCTYPE html>"
@@ -43,12 +37,15 @@ echo "Creating index.html in docs..."
   echo "<body>"
   echo "  <h1>Documentation Index</h1>"
   echo "  <ul>"
+  # Iterate over every subdirectory in docs/
   for d in docs/*/; do
     folder=$(basename "$d")
-    # Assume the HTML file is named as the folder plus ".html"
-    htmlfile="${folder}.html"
-    if [ -f "docs/$folder/$htmlfile" ]; then
-      echo "    <li><a href=\"$folder/$htmlfile\">$folder</a></li>"
+    # Find the first .html file in the subdirectory.
+    htmlfile=$(find "docs/$folder" -maxdepth 1 -type f -name "*.html" | head -n 1)
+    if [ -n "$htmlfile" ]; then
+      # Remove the "docs/" prefix so the link is relative to the site root.
+      href=${htmlfile#docs/}
+      echo "    <li><a href=\"$href\">$folder</a></li>"
     else
       echo "    <li>$folder (No HTML file found)</li>"
     fi
