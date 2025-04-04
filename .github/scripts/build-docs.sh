@@ -7,12 +7,12 @@ echo "🔄 Rebuilding docs folder for GitHub Pages..."
 rm -rf docs
 mkdir docs
 
-# Copy EVERYTHING from doc/ to docs/ (including hidden files)
-rsync -av --progress doc/ docs/
+# Copy EVERYTHING from doc/ into docs/ recursively (preserves all subfolders, hidden files, etc.)
+cp -R doc/ docs/
 
-echo "✅ Copied all contents from doc/ to docs/"
+echo "✅ Copied entire doc/ folder to docs/"
 
-# Generate index.html in docs/ that only lists HTML files found in:
+# Generate index.html in docs/ that lists HTML files only in:
 #   - docs/scripts/*/*.html
 #   - docs/docs/*/*.html
 echo "Creating index.html in docs..."
@@ -37,7 +37,6 @@ echo "Creating index.html in docs..."
   
   # List HTML files in docs/scripts/*/*.html
   find docs/scripts -mindepth 2 -maxdepth 2 -type f -name "*.html" | while read htmlfile; do
-      # Remove the leading "docs/" to form a relative URL
       relpath=${htmlfile#docs/}
       label=$(basename "$htmlfile" .html)
       echo "    <li><a href=\"$relpath\">$label</a></li>"
