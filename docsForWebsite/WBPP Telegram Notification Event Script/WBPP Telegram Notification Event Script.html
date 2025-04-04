@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+   <title>PixInsight Reference Documentation | WBPP Telegram Notifications</title>
+   <meta name="keywords" content="WBPP, Telegram, Notifications, PixInsight, Pipeline, Automation" />
+   <meta name="author" content="Luca Bartek" />
+   <meta name="description" content="Adds Telegram bot integration to WBPP pipelines, sending real-time status messages and images at key execution points." />
+   <meta name="robots" content="INDEX,FOLLOW" />
+   <meta name="generator" content="PixInsight Documentation Compiler script version 1.7.1" />
+   <meta name="pidoc-document-class" content="PIGenericDoc" />
+   <script type="text/javascript" src="../../pidoc/scripts/pidoc-utility.js"></script>
+   <link type="text/css" href="../../pidoc/css/pidoc-common.css" rel="stylesheet" />
+   <link type="text/css" href="../../pidoc/css/pidoc-highlight.css" rel="stylesheet" />
+   <link type="text/css" href="../../pidoc/css/pidoc-generic.css" rel="stylesheet" />
+   <link rel="icon" href="../../pidoc/icons/pidoc-icon.svg" />
+</head>
+<body>
+<script type="text/javascript">
+   pidoc_generateDynamicContents();
+</script>
+
+<h1>WBPP Telegram Notifications</h1>
+<div id="authors">
+<p>By Luca Bartek</p>
+</div>
+
+<hr class="separator"/>
+
+<div id="brief">
+<p>Adds Telegram bot integration to WBPP pipelines, sending real-time status messages and images at key execution points. <a href="#__contents__">[more]</a></p></div>
+
+<div id="keywords">
+<p><strong>Keywords:</strong> WBPP, Telegram, Notifications, PixInsight, Pipeline, Automation</p>
+</div>
+
+<h3 class="pidoc_sectionTitle" id="__toc__">Contents</h3>
+<p class="pidoc_sectionToggleButton" onclick="pidoc_toggleSection( 'toc', this );">[hide]</p>
+<div id="toc">
+<ul>
+<li class="pidoc_tocItem"><a href="#__Introduction__">1&emsp;Introduction</a></li>
+<li class="pidoc_tocItem"><a href="#__Setup__">2&emsp;Setup</a></li>
+<li class="pidoc_tocItem"><a href="#__Message_Types__">3&emsp;Message Types</a></li>
+<li class="pidoc_tocItem"><a href="#__Message_Content__">4&emsp;Message Content</a></li>
+<li class="pidoc_tocItem"><a href="#__Limitations__">5&emsp;Limitations</a></li>
+</ul>
+</div>
+
+<div id="__contents__">
+
+<div class="pidoc_section" id="__Introduction__">
+   <h3 class="pidoc_sectionTitle">1&emsp;Introduction</h3>
+   <p class="pidoc_sectionToggleButton" onclick="pidoc_toggleSection( 'Introduction', this );">[hide]</p>
+   <div id="Introduction">
+<p>This extension adds Telegram notification support to the <strong>Weighted Batch Preprocessing (WBPP)</strong> process. Notifications inform the user about pipeline progress, completion, and errors in real time via Telegram messages. This is particularly helpful for long unattended processing tasks or remote system operation.</p>
+   </div>
+</div>
+
+<div class="pidoc_section" id="__Setup__">
+   <h3 class="pidoc_sectionTitle">2&emsp;Setup</h3>
+   <p class="pidoc_sectionToggleButton" onclick="pidoc_toggleSection( 'Setup', this );">[hide]</p>
+   <div id="Setup">
+<p>To use Telegram notifications, follow these steps:</p>
+
+<ul class="pidoc_list">
+<li>Open the Pipeline tab in WBPP.</li>
+<li> Add an Event Script. Use the script
+<pre class="code">TelegramEventScript.js</pre>
+
+, available in the TheSpaceKoala PixInsight repository. After downloading the scripts, you'll find it together in the PixInsight scripts directory</li>
+<li>Open the script in a text editor. Modify the following two lines at the top:</li>
+<li><em>const TELEGRAM_BOT_TOKEN = 'your-token-here';</em></li>
+<li><em>const TELEGRAM_CHAT_ID = 'your-chat-id-here';</em></li>
+<li>Save the script with these changes.</li>
+<li>It is recommended that you duplicate the script (e.g., <strong>MyTelegramEventScript.js</strong>) into another location and use that instead to avoid overwriting your settings during updates.</li>
+</ul>
+
+<p><strong>Setting Up a Telegram Bot</strong></p>
+
+<ul class="pidoc_list">
+<li>Open Telegram and search for <strong>BotFather</strong>.</li>
+<li>Start a chat and type: <strong>/newbot</strong>.</li>
+<li>Follow the instructions to create a bot and receive an API token, e.g. <em>63xxxxxx71:AAFoxxxxn0hwA-2TVSxxxNf4c</em>.</li>
+<li>Copy the bot token; you will need it for the script.</li>
+</ul>
+
+<p><strong>Finding Your Telegram Chat ID</strong></p>
+
+<ul class="pidoc_list">
+<li>Start a new chat with your newly created bot.</li>
+<li>Visit the website: <em>https://api.telegram.org/bot/getUpdates</em> (replace <em></em> with the actual token from BotFather).</li>
+<li>You will receive a JSON response similar to this:</li>
+</ul>
+
+<p><em>&quot;ok&quot;: true, <br/>
+ &quot;result&quot;: [<br/>
+ {<br/>
+ &quot;update_id&quot;: 83xxxxx35,<br/>
+ &quot;message&quot;: {<br/>
+ &quot;message_id&quot;: 2643,<br/>
+ &quot;from&quot;: {...},<br/>
+ &quot;chat&quot;: {<br/>
+ &quot;id&quot;: <strong>123456789</strong>,<br/>
+ &quot;first_name&quot;: &quot;...&quot;,<br/>
+ &quot;last_name&quot;: &quot;...&quot;,<br/>
+ &quot;username&quot;: &quot;@username&quot;,<br/>
+ &quot;type&quot;: &quot;private&quot;<br/>
+ },<br/>
+ &quot;date&quot;: 1703062972,<br/>
+ &quot;text&quot;: &quot;/start&quot;<br/>
+ } } ]}</em></p>
+
+<ul class="pidoc_list">
+<li>The number in the <em>id</em> field of the <em>chat</em> section is your Telegram Chat ID.</li>
+</ul>
+
+   </div>
+</div>
+
+<div class="pidoc_section" id="__Message_Types__">
+   <h3 class="pidoc_sectionTitle">3&emsp;Message Types</h3>
+   <p class="pidoc_sectionToggleButton" onclick="pidoc_toggleSection( 'Message_Types', this );">[hide]</p>
+   <div id="Message_Types">
+<p>The script supports the following notification types:</p>
+
+<ul class="pidoc_list">
+<li><strong>Start Notification</strong> — Sent when the WBPP pipeline begins.</li>
+<li><strong>Step Notifications</strong> — Sent when each WBPP step starts or completes.</li>
+<li><strong>Error Notification</strong> — Sent immediately when an error occurs.</li>
+<li><strong>Completion Notification</strong> — Sent when the pipeline finishes successfully.</li>
+<li><strong>Image Notification</strong> — A JPEG preview of the final stacked image is downsampled, autostretched, and sent via Telegram.</li>
+</ul>
+
+   </div>
+</div>
+
+<div class="pidoc_section" id="__Message_Content__">
+   <h3 class="pidoc_sectionTitle">4&emsp;Message Content</h3>
+   <p class="pidoc_sectionToggleButton" onclick="pidoc_toggleSection( 'Message_Content', this );">[hide]</p>
+   <div id="Message_Content">
+<p>Notifications typically include:</p>
+
+<ul class="pidoc_list">
+<li>Current WBPP step</li>
+<li>Operation status summary</li>
+<li>Error message (in case of failure)</li>
+</ul>
+
+<p>Example messages:</p>
+
+<pre class="code">WBPP started</pre>
+
+
+<pre class="code">ImageIntegration starting: processing 48/62 active frames</pre>
+
+
+<pre class="code">LocalNormalization failed, Cannot open reference image</pre>
+
+
+<pre class="code">WBPP terminated</pre>
+
+
+<pre class="code">ImageIntegration successfully executed</pre>
+
+   </div>
+</div>
+
+<div class="pidoc_section" id="__Limitations__">
+   <h3 class="pidoc_sectionTitle">5&emsp;Limitations</h3>
+   <p class="pidoc_sectionToggleButton" onclick="pidoc_toggleSection( 'Limitations', this );">[hide]</p>
+   <div id="Limitations">
+
+<ul class="pidoc_list">
+<li>Telegram integration requires external network access and uses the <strong>curl</strong> utility.</li>
+<li>If the bot token or chat ID is invalid, no message is sent.</li>
+<li>Messages are silently skipped if configuration is missing.</li>
+</ul>
+
+   </div>
+</div>
+
+<hr class="separator"/>
+
+<div id="copyright">
+   <p>Copyright &copy; (c) 2025 Luca Bartek, Roberto Sartori</p>
+</div>
+
+<div id="footer">
+   <p>Generated by the PixInsight Documentation Compiler script version 1.7.1 on 2025-04-01 16:30:46 UTC</p>
+</div>
+<br/>
+<br/>
+
+</div> <!-- contents -->
+
+</body>
+</html>
