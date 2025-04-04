@@ -7,10 +7,10 @@ echo "🔄 Rebuilding docs folder for GitHub Pages..."
 rm -rf docs
 mkdir docs
 
-# Copy EVERYTHING from doc/ into docs/ recursively (preserves all subfolders, hidden files, etc.)
-cp -R doc/ docs/
+# Copy everything from doc/ into docs/ (all contents, not the doc/ folder itself)
+cp -R doc/. docs/
 
-echo "✅ Copied entire doc/ folder to docs/"
+echo "✅ Copied entire content of doc/ into docs/"
 
 # Generate index.html in docs/ that lists HTML files only in:
 #   - docs/scripts/*/*.html
