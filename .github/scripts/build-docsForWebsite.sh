@@ -1,30 +1,30 @@
 #!/bin/bash
 set -e
 
-echo "🔄 Rebuilding docsForWebsite folder..."
+echo "🔄 Rebuilding docs folder..."
 
 # Remove any existing docsForWebsite folder and create a new one
-rm -rf docsForWebsite
-mkdir docsForWebsite
+rm -rf docs
+mkdir docs
 
 # Copy docs from doc/scripts into docsForWebsite
 for dir in doc/scripts/*; do
   name=$(basename "$dir")
-  mkdir -p "docsForWebsite/$name"
-  cp -r "$dir"/* "docsForWebsite/$name/"
+  mkdir -p "docs/$name"
+  cp -r "$dir"/* "docs/$name/"
 done
 
 # Copy docs from doc/docs into docsForWebsite
 for dir in doc/docs/*; do
   name=$(basename "$dir")
-  mkdir -p "docsForWebsite/$name"
-  cp -r "$dir"/* "docsForWebsite/$name/"
+  mkdir -p "docs/$name"
+  cp -r "$dir"/* "docs/$name/"
 done
 
-echo "Docs copied to docsForWebsite"
+echo "Docs copied to docs"
 
 # Create an index.html file in docsForWebsite listing all subdirectories
-echo "Creating index.html in docsForWebsite..."
+echo "Creating index.html in docs..."
 (
   echo "<!DOCTYPE html>"
   echo "<html lang='en'>"
@@ -43,13 +43,13 @@ echo "Creating index.html in docsForWebsite..."
   echo "<body>"
   echo "  <h1>Documentation Index</h1>"
   echo "  <ul>"
-  for d in docsForWebsite/*/; do
+  for d in docs/*/; do
     dir=$(basename "$d")
     echo "    <li><a href=\"$dir/\">$dir</a></li>"
   done
   echo "  </ul>"
   echo "</body>"
   echo "</html>"
-) > docsForWebsite/index.html
+) > docs/index.html
 
-echo "Index created in docsForWebsite"
+echo "Index created in docs"
