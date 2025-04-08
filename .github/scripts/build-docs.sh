@@ -83,17 +83,15 @@ echo "Creating index.json in docs..."
   echo "]"
 ) > docs/index.json
 
-echo "✅ Global JSON index created in docs/index.json"
+echo "Global JSON index created in docs/index.json"
 
-# Add Back button to all individual HTML pages (top-left fixed position)
-echo "Adding fixed-position Back button to all HTML files..."
+echo "Adding styled Back button to all HTML files..."
 
 for htmlfile in docs/scripts/*/*.html docs/docs/*/*.html; do
   if [[ "$htmlfile" == "docs/index.html" ]]; then
     continue
   fi
 
-  sed -i 's|<body>|<body>\n  <div style="position: fixed; top: 10px; left: 10px; background: #fff; padding: 6px 10px; border: 1px solid #ccc; border-radius: 4px; z-index: 9999;"><a href="../../index.html" style="text-decoration: none; color: #000;">← Back</a></div>|' "$htmlfile"
-done
+  sed -i 's|<body>|<body>\n  <div style="position: fixed; top: 10px; left: 80px; background: #f8f8f8; padding: 5px 12px; border-radius: 8px; z-index: 9999; font-family: sans-serif; font-size: 14px;"><a href="../../index.html" style="text-decoration: none; color: #000;">← Back</a></div>|' "$htmlfile"
 
-echo "✅ Fixed-position Back buttons added to all HTML files"
+echo "Fixed-position Back buttons added to all HTML files"
