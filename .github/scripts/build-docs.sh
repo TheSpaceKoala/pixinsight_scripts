@@ -37,14 +37,10 @@ echo "Creating index.html in docs..."
   
   # List HTML files in docs/scripts/*/*.html
   find docs/scripts -mindepth 2 -maxdepth 2 -type f -name "*.html" | while read htmlfile; do
-          relpath=${htmlfile#docs/}
+      relpath=${htmlfile#docs/}
       label=$(basename "$htmlfile" .html)
       echo "    <li><a href=\"$relpath\">$label</a></li>"
-
-
-
-
-      done
+  done
   
   # List HTML files in docs/docs/*/*.html
   find docs/docs -mindepth 2 -maxdepth 2 -type f -name "*.html" | while read htmlfile; do
@@ -52,9 +48,6 @@ echo "Creating index.html in docs..."
       label=$(basename "$htmlfile" .html)
       echo "    <li><a href=\"$relpath\">$label</a></li>"
   done
-
-
-
 
   echo "  </ul>"
   echo "</body>"
@@ -91,3 +84,16 @@ echo "Creating index.json in docs..."
 ) > docs/index.json
 
 echo "✅ Global JSON index created in docs/index.json"
+
+# Add Back button to all individual HTML pages (top-left fixed position)
+echo "Adding fixed-position Back button to all HTML files..."
+
+for htmlfile in docs/scripts/*/*.html docs/docs/*/*.html; do
+  if [[ "$htmlfile" == "docs/index.html" ]]; then
+    continue
+  fi
+
+  sed -i 's|<body>|<body>\n  <div style="position: fixed; top: 10px; left: 10px; background: #fff; padding: 6px 10px; border: 1px solid #ccc; border-radius: 4px; z-index: 9999;"><a href="../../index.html" style="text-decoration: none; color: #000;">← Back</a></div>|' "$htmlfile"
+done
+
+echo "✅ Fixed-position Back buttons added to all HTML files"
