@@ -32,7 +32,7 @@ echo "Creating index.html in docs..."
   echo "  </style>"
   echo "</head>"
   echo "<body>"
-  echo "  <h1>Documentation Index</h1>"
+  echo "  <h1>PixInsight Scripts</h1>"
   echo "  <ul>"
   
   # List HTML files in docs/scripts/*/*.html
