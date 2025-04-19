@@ -6,16 +6,16 @@
     </p>
    </description>
    <platform os="all" arch="noarch" version="1.8.9-2:1.9.99">
-      <package fileName="TheSpaceKoalaScripts_20250404.zip" sha1="61c23b8e2456cb7b4640bb685d3519511b344b9d" type="script" releaseDate="20250403">
+      <package fileName="TheSpaceKoalaScripts_20250419.zip" sha1="bee63a3a154a397d01bda14b3de366f3da6ffc12" type="script" releaseDate="20250419">
          <title>
         The Space Koala Script Repository
       </title>
          <description>
             <p>
-          The Space Koala Script Repository
+          Fixed an issue when sending large images to Telegram via standalone script
         </p>
          </description>
       </package>
    </platform>
 </xri>
-<Signature developerId="Luca Bartek" timestamp="2025-04-04T19:00:47.128Z" encoding="Base64">Opz4gUfn6oeXZX3CTmzffogPc9oOOcgaZSWB18ME/NKLHGQYScqKG/C7gs2+46pOhx3cL9Xqrhx6d05yQorOBg==</Signature>
+<Signature developerId="Luca Bartek" timestamp="2025-04-19T16:38:15.356Z" encoding="Base64">sl20l1DF8ig9rP7tVV7ArWzJTCaGMOuzkdxa+57QNEAhBt1NwGGVsNPkouvx6SFeUNKzbQw6sOvUm4e1lPICBQ==</Signature>
