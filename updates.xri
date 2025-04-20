@@ -6,16 +6,16 @@
     </p>
    </description>
    <platform os="all" arch="noarch" version="1.8.9-2:1.9.99">
-      <package fileName="TheSpaceKoalaScripts_20250419.zip" sha1="5f34cc81acbd600e5f99c506d617195ee252f5f7" type="script" releaseDate="20250419">
+      <package fileName="TheSpaceKoalaScripts_20250421.zip" sha1="45ed248c5d8074725b9a110f0a2065764448410e" type="script" releaseDate="20250421">
          <title>
         The Space Koala Script Repository
       </title>
          <description>
             <p>
-          Fixed an issue when sending large images to Telegram via standalone script
+          Fixed duplicate debayering steps when multiple &quot;pre&quot; group lights are present
         </p>
          </description>
       </package>
    </platform>
 </xri>
-<Signature developerId="Luca Bartek" timestamp="2025-04-19T17:34:43.580Z" encoding="Base64">zRnZnidNzfHfP7SWsVls2DLxuI+Q9FFf57qqvIKWbNfVm3NS/3SbgqwtFcD7LTp6DtglIo8cwERXL/VwmFnkDw==</Signature>
+<Signature developerId="Luca Bartek" timestamp="2025-04-20T23:07:35.738Z" encoding="Base64">WZQFxNJ9JWQdoBBcoZ8UPEpA9K6JmJ4gz2pTiRNzf17R7sHH2LUWnSfoTFypXQP0cxajjkRPji8nIydAtm6JBA==</Signature>
