@@ -6,16 +6,18 @@
     </p>
    </description>
    <platform os="all" arch="noarch" version="1.8.9-2:1.9.99">
-      <package fileName="TheSpaceKoalaScripts_20250421.zip" sha1="45ed248c5d8074725b9a110f0a2065764448410e" type="script" releaseDate="20250421">
+      <package fileName="TheSpaceKoalaScripts_20250502.zip" sha1="ab840d316577b170740fa19af0d6cb3abccfd595" type="script" releaseDate="20250502">
          <title>
         The Space Koala Script Repository
       </title>
          <description>
             <p>
-          Fixed duplicate debayering steps when multiple &quot;pre&quot; group lights are present
+          - [x] new SendImageToPhone script to send images and configure event script
+          - [x] wrong folder name for file when step is onPostProcessStart
+          - [x] support for iMessage (Mac Only)
         </p>
          </description>
       </package>
    </platform>
 </xri>
-<Signature developerId="Luca Bartek" timestamp="2025-04-20T23:07:35.738Z" encoding="Base64">WZQFxNJ9JWQdoBBcoZ8UPEpA9K6JmJ4gz2pTiRNzf17R7sHH2LUWnSfoTFypXQP0cxajjkRPji8nIydAtm6JBA==</Signature>
+<Signature developerId="Luca Bartek" timestamp="2025-05-02T16:32:48.667Z" encoding="Base64">A3Vi5rWxNy5wRleYcXA0Bd0nhpgDWxuZYd/xew0e+rrIoDatOE561OnR15FObyFkH9zzpM+YCxzUZkDutoKwAw==</Signature>
