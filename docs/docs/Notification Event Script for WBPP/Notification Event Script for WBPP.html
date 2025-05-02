@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+   <title>PixInsight Reference Documentation | WBPP Notification Event Script</title>
+   <meta name="keywords" content="WBPP, Telegram, iMessage, Notifications, PixInsight, Pipeline, Automation" />
+   <meta name="author" content="Luca Bartek" />
+   <meta name="description" content="A PixInsight script for sending notifications at key events in the WBPP pipeline." />
+   <meta name="robots" content="INDEX,FOLLOW" />
+   <meta name="generator" content="PixInsight Documentation Compiler script version 1.7.1" />
+   <meta name="pidoc-document-class" content="PIGenericDoc" />
+   <script type="text/javascript" src="../../pidoc/scripts/pidoc-utility.js"></script>
+   <link type="text/css" href="../../pidoc/css/pidoc-common.css" rel="stylesheet" />
+   <link type="text/css" href="../../pidoc/css/pidoc-highlight.css" rel="stylesheet" />
+   <link type="text/css" href="../../pidoc/css/pidoc-generic.css" rel="stylesheet" />
+   <link rel="icon" href="../../pidoc/icons/pidoc-icon.svg" />
+</head>
+<body>
+  <div style="position: fixed; top: 10px; left: 80px; background: #f8f8f8; padding: 5px 12px; border-radius: 8px; z-index: 9999;"><a href="../../index.html" style="text-decoration: none; color: #000;">← Back</a></div>
+<script type="text/javascript">
+   pidoc_generateDynamicContents();
+</script>
+
+<h1>WBPP Notification Event Script</h1>
+<div id="authors">
+<p>By Luca Bartek</p>
+</div>
+
+<hr class="separator"/>
+
+<div id="brief">
+<p>A PixInsight script for sending notifications at key events in the WBPP pipeline. <a href="#__contents__">[more]</a></p></div>
+
+<div id="keywords">
+<p><strong>Keywords:</strong> WBPP, Telegram, iMessage, Notifications, PixInsight, Pipeline, Automation</p>
+</div>
+
+<h3 class="pidoc_sectionTitle" id="__toc__">Contents</h3>
+<p class="pidoc_sectionToggleButton" onclick="pidoc_toggleSection( 'toc', this );">[hide]</p>
+<div id="toc">
+<ul>
+<li class="pidoc_tocItem"><a href="#__Introduction__">1&emsp;Introduction</a></li>
+<li class="pidoc_tocItem"><a href="#__Setup__">2&emsp;Setup</a></li>
+<li class="pidoc_tocItem"><a href="#__Usage__">3&emsp;Usage</a></li>
+<li class="pidoc_tocItem"><a href="#__Setting_up_a_Telegram_Bot__">4&emsp;Setting up a Telegram Bot</a></li>
+<li class="pidoc_tocItem"><a href="#__Limitations__">5&emsp;Limitations</a></li>
+<li class="pidoc_tocItem"><a href="#__Troubleshooting__">6&emsp;Troubleshooting</a></li>
+</ul>
+</div>
+
+<div id="__contents__">
+
+<div class="pidoc_section" id="__Introduction__">
+   <h3 class="pidoc_sectionTitle">1&emsp;Introduction</h3>
+   <p class="pidoc_sectionToggleButton" onclick="pidoc_toggleSection( 'Introduction', this );">[hide]</p>
+   <div id="Introduction">
+<p>The <strong>Notification Event Script</strong> provides a way to receive real-time notifications during the execution of the <strong>Weighted Batch Preprocessing (WBPP)</strong> pipeline in PixInsight. This script supports multiple messaging platforms, including <em>Telegram</em> and <em>iMessage</em>, to send updates, error messages, and image notifications.</p>
+   </div>
+</div>
+
+<div class="pidoc_section" id="__Setup__">
+   <h3 class="pidoc_sectionTitle">2&emsp;Setup</h3>
+   <p class="pidoc_sectionToggleButton" onclick="pidoc_toggleSection( 'Setup', this );">[hide]</p>
+   <div id="Setup">
+<p>In order to use the <strong>Notification Event Script</strong> with WBPP (Weighted Batch Preprocessing), you first need to configure the notification system you want to use. This is done through the <strong>SendMessageToPhone</strong> script, which currently allows you to select either <strong>Telegram</strong> or <strong>iMessage</strong> as the platform to receive notifications.</p>
+<p>Follow the steps below to configure the notification system:</p>
+<p><strong>Step 1</strong>: Open the <em>SendMessageToPhone</em> script in <em>PixInsight's Script Explorer</em>.</p>
+<p><strong>Step 2</strong>: Select the messaging platform you want to use: <em>Telegram</em> or <em>iMessage</em>. You will see two radio buttons: one for <em>Telegram</em> and one for <em>iMessage</em>. Click the radio button next to the platform you want to use.</p>
+<p><strong>Step 3a</strong>: If you selected <em>Telegram</em>, you will have to enter the <em>Telegram Bot Token</em> and <em>Chat ID</em>. To send notifications via <em>Telegram</em>, you'll need to <a href="#telegramBotSetup">Set up your Telegram Bot first</a>.</p>
+<p><strong>Step 3b</strong>: If you selected <em>iMessage</em>, enter the <em>Phone Number</em> of the recipient in international format. For <em>iMessage</em>, enter the recipient of the person who will receive the notifications. This is likely your own <em>Apple ID</em> if you'd like to receive the notifications yourself, but technically you could insert any AppleID here. Ensure PixInsight has the rights to execute AppleScript: Run the script standalone once, at which point it will ask for the necessary permissions. Accept.</p>
+<p><strong>Step 4</strong>: Save the configuration by clicking the <em>Save Parameters</em> button. Once you've filled out the necessary fields, click the <em>Save Parameters</em> button to save your settings. This will store the Bot Token, Chat ID, recipient phone number, and other options so that the script can send notifications during the WBPP process.</p>
+<img src="images/configuring_telegramBot.png" alt=""/>
+<p>An example of a Telegram Bot Configuration</p>
+   </div>
+</div>
+
+<div class="pidoc_section" id="__Usage__">
+   <h3 class="pidoc_sectionTitle">3&emsp;Usage</h3>
+   <p class="pidoc_sectionToggleButton" onclick="pidoc_toggleSection( 'Usage', this );">[hide]</p>
+   <div id="Usage">
+<p>Notifications typically include:</p>
+
+<ul class="pidoc_list">
+<li>Current WBPP step</li>
+<li>Operation status summary</li>
+<li>Error message (in case of failure)</li>
+</ul>
+
+<p>Example messages:</p>
+
+<pre class="code">WBPP started</pre>
+
+
+<pre class="code">ImageIntegration starting: processing 48/62 active frames</pre>
+
+
+<pre class="code">LocalNormalization failed, Cannot open reference image</pre>
+
+
+<pre class="code">WBPP terminated</pre>
+
+
+<pre class="code">ImageIntegration successfully executed</pre>
+
+   </div>
+</div>
+
+<div class="pidoc_section" id="__Setting_up_a_Telegram_Bot__">
+   <h3 class="pidoc_sectionTitle">4&emsp;<a id="telegramBotSetup"></a>Setting up a Telegram Bot</h3>
+   <p class="pidoc_sectionToggleButton" onclick="pidoc_toggleSection( 'Setting_up_a_Telegram_Bot', this );">[hide]</p>
+   <div id="Setting_up_a_Telegram_Bot">
+<p><strong>Setting Up a Telegram Bot</strong></p>
+
+<ul class="pidoc_list">
+<li>On your phone, open Telegram and search for the user <strong>BotFather</strong>.</li>
+<li>Start a chat and type: <strong>newbot</strong>.</li>
+<li>Follow the instructions to create a bot and receive an API token e.g. <strong>63xxxxxx71:AAFoxxxxn0hwA-2TVSxxxNf4c</strong>.</li>
+<li>Copy the bot token; you will need it for this script.</li>
+</ul>
+
+<p><strong>Finding Your Telegram Chat ID</strong></p>
+
+<ul class="pidoc_list">
+<li>Start a new chat with your new bot.</li>
+<li>Visit the website https://api.telegram.org/bot<strong>63xxxxxx71:AAFoxxxxn0hwA-2TVSxxxNf4c</strong>/getUpdates - make sure to replace the <strong>bot token</strong> with the token you got from the BotFather.</li>
+<li>It will show you a response similar to the following:</li>
+</ul>
+
+<p><em> &quot;ok&quot;: true, <br/>
+ &quot;result&quot;: [<br/>
+ {<br/>
+ &quot;update_id&quot;: 83xxxxx35,<br/>
+ &quot;message&quot;: {<br/>
+ &quot;message_id&quot;: 2643,<br/>
+ &quot;from&quot;: {...},<br/>
+ &quot;chat&quot;: {<br/>
+ &quot;id&quot;: <strong>123456789</strong>,<br/>
+ &quot;first_name&quot;: &quot;...&quot;,<br/>
+ &quot;last_name&quot;: &quot;...&quot;,<br/>
+ &quot;username&quot;: &quot;@username&quot;,<br/>
+ &quot;type&quot;: &quot;private&quot;<br/>
+ },<br/>
+ &quot;date&quot;: 1703062972,<br/>
+ &quot;text&quot;: &quot;/start&quot;<br/>
+ } } ]}
+<ul class="pidoc_list">
+<li>The number you get in the <strong>chat</strong> section in the <strong>id</strong> field is your <strong>chat id</strong>.</li>
+</ul>
+
+</em></p>
+   </div>
+</div>
+
+<div class="pidoc_section" id="__Limitations__">
+   <h3 class="pidoc_sectionTitle">5&emsp;Limitations</h3>
+   <p class="pidoc_sectionToggleButton" onclick="pidoc_toggleSection( 'Limitations', this );">[hide]</p>
+   <div id="Limitations">
+
+<ul class="pidoc_list">
+<li>The script uses the <em>curl</em> utility to interact with Telegram. Ensure your system has access to the internet and <em>curl</em> is available.</li>
+<li>iMessage sending is only available on macOS. If you're running this script on Windows or Linux, you will need to configure Telegram as the platform.</li>
+<li>Notifications may be delayed if there is network congestion or if the bot/token/recipient information is incorrect.</li>
+</ul>
+
+   </div>
+</div>
+
+<div class="pidoc_section" id="__Troubleshooting__">
+   <h3 class="pidoc_sectionTitle">6&emsp;Troubleshooting</h3>
+   <p class="pidoc_sectionToggleButton" onclick="pidoc_toggleSection( 'Troubleshooting', this );">[hide]</p>
+   <div id="Troubleshooting">
+
+<ul class="pidoc_list">
+<li>If no notifications are received, ensure the <em>Telegram Bot Token</em> and <em>Chat ID</em> are entered correctly. For iMessage, ensure the recipient phone number is valid.</li>
+<li>Check if the <em>curl</em> utility is working properly on your system. You can test this by sending a test message through Telegram manually using the curl command.</li>
+<li>If you receive a <em>&quot;No valid target image found&quot;</em> error, ensure there is an active image in PixInsight when running the script.</li>
+</ul>
+
+   </div>
+</div>
+
+<hr class="separator"/>
+
+<div id="copyright">
+   <p>Copyright &copy; (c) 2025 Luca Bartek</p>
+</div>
+
+<div id="footer">
+   <p>Generated by the PixInsight Documentation Compiler script version 1.7.1 on 2025-04-29 22:14:15 UTC</p>
+</div>
+<br/>
+<br/>
+
+</div> <!-- contents -->
+
+</body>
+</html>
