@@ -6,18 +6,16 @@
     </p>
    </description>
    <platform os="all" arch="noarch" version="1.8.9-2:1.9.99">
-      <package fileName="TheSpaceKoalaScripts_20250502.zip" sha1="d436a682ce63d6063b1bb64f8b301112aed9fe7e" type="script" releaseDate="20250502">
+      <package fileName="TheSpaceKoalaScripts_20250505.zip" sha1="bbc7c0c6f480717c9f293f88cce6b62c96c286a0" type="script" releaseDate="20250502">
          <title>
         The Space Koala Script Repository
       </title>
          <description>
             <p>
-          - [x] new SendImageToPhone script to send images and configure event script
-          - [x] wrong folder name for file when step is onPostProcessStart
-          - [x] support for iMessage (Mac Only)
+          - [x] fixed an issue that always forced the autostretch in standalone mode
         </p>
          </description>
       </package>
    </platform>
 </xri>
-<Signature developerId="Luca Bartek" timestamp="2025-05-02T16:54:34.825Z" encoding="Base64">mTmREgNPiKr/JTE44y7fSFRERVO8gLNlFlsnGyyq/ZJ/BQ65DTkrmL117ft1GVp+3BANUTIe7DO0GtHqzSxNBg==</Signature>
+<Signature developerId="Luca Bartek" timestamp="2025-05-05T12:59:56.745Z" encoding="Base64">jOo6PoF/DsHgrgZAWHtlnt9mQjbolrJCEKIjMHReZ8YiW+YxVW/ZFMACpKk4KEffEwAVujDTAJoMm+NQwDRNAg==</Signature>
