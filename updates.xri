@@ -6,16 +6,16 @@
     </p>
    </description>
    <platform os="all" arch="noarch" version="1.8.9-2:1.9.99">
-      <package fileName="TheSpaceKoalaScripts_20250505.zip" sha1="74466335ad869e549fb5d65c5beaeb88f0f9e170" type="script" releaseDate="20250502">
+      <package fileName="TheSpaceKoalaScripts_20250506.zip" sha1="67c8a12b62f7cca2359736a0520eeabb1d2a15a9" type="script" releaseDate="20250502">
          <title>
         The Space Koala Script Repository
       </title>
          <description>
             <p>
-          - [x] fixed an issue that always forced the autostretch in standalone mode
+          - [x] fixed an issue where null value chat id&apos;s would throw an error
         </p>
          </description>
       </package>
    </platform>
 </xri>
-<Signature developerId="Luca Bartek" timestamp="2025-05-05T21:12:23.558Z" encoding="Base64">p5zESq8dT1mTncgGImKWDWR0MqUsV2w2B0XPRIouaCpk1e/hzA8WYnekSx+rS9V/wg+Xf6VQFVXKQLMD+IbxCg==</Signature>
+<Signature developerId="Luca Bartek" timestamp="2025-05-06T09:37:32.987Z" encoding="Base64">fm49MdpFHSVPKc5tyq32CkyOXBhS44fWsDN7AnWC1fysVmErRBG8yW8nkvJ+9xRDnMHTN3iq/qi63pYs3LcaDw==</Signature>
