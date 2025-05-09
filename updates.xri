@@ -6,13 +6,13 @@
     </p>
    </description>
    <platform os="all" arch="noarch" version="1.8.9-2:1.9.99">
-      <package fileName="TheSpaceKoalaScripts_20250507.zip" sha1="a22622aa8ee54ac2d7274925cdc72615bb1bb953" type="script" releaseDate="20250507">
+      <package fileName="TheSpaceKoalaScripts_20250509.zip" sha1="4b8a4a262d9f25b1ce1221889f1e5d15a9eaedf0" type="script" releaseDate="20250509">
          <title>
         The Space Koala Script Repository
       </title>
          <description>
             <p>
-          - [x] fixed linked vs unlinked autostretch in standalone image sender script
+          - [x] update to make NCPB work after new WBPP version
         </p>
          </description>
       </package>
