@@ -6,16 +6,17 @@
     </p>
    </description>
    <platform os="all" arch="noarch" version="1.8.9-2:1.9.99">
-      <package fileName="TheSpaceKoalaScripts_20250509.zip" sha1="963dd2d14eb825ac461ccf17853e5a82bcfa3ce0" type="script" releaseDate="20250509">
+      <package fileName="TheSpaceKoalaScripts_20250514.zip" sha1="f36c477c57dea6fa0c78a4900c4c87b9da652c1a" type="script" releaseDate="20250509">
          <title>
         The Space Koala Script Repository
       </title>
          <description>
             <p>
-          - [x] update to make NCPB work after new WBPP version
+          - [x] fixed some errors that were introduced after latest WBPP updates
+          - [x] fixed the issue where debayering only happened if calibration was done
         </p>
          </description>
       </package>
    </platform>
 </xri>
-<Signature developerId="Luca Bartek" timestamp="2025-05-09T08:22:36.749Z" encoding="Base64">wTtSKkyliEqyCNIbnR2fWu8IuP9lGZmwBQ6x8+pmShLO3dtaQVDmQtS6WK19G1DeFoIYiw5wKtkxnOUKdyR6Dg==</Signature>
+<Signature developerId="Luca Bartek" timestamp="2025-05-14T22:31:18.353Z" encoding="Base64">0Xt0zcEKi00OVzJGKEGZXiKHOEiQJL++Hkv2SuvC+PXV/omx2CDV0/V7hnVzhXsMeT2QfcV1TigqVhpGHGXwDg==</Signature>
