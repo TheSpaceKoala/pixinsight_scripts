@@ -3,9 +3,9 @@
 <head>
    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
    <title>PixInsight Reference Documentation | SendMessageToPhone</title>
-   <meta name="keywords" content="Telegram, iMessage, Notifications, Image, PixInsight, SendMessageToPhone, Setup, Configuration, Messaging" />
+   <meta name="keywords" content="Telegram, iMessage, Pushover, Notifications, Image, PixInsight, SendMessageToPhone, Setup, Configuration, Messaging" />
    <meta name="author" content="Luca Bartek" />
-   <meta name="description" content="A PixInsight script that sends notifications and images directly to your phone via Telegram or iMessage." />
+   <meta name="description" content="A PixInsight script that sends notifications and images directly to your phone via Telegram, iMessage, or Pushover." />
    <meta name="robots" content="INDEX,FOLLOW" />
    <meta name="generator" content="PixInsight Documentation Compiler script version 1.7.1" />
    <meta name="pidoc-document-class" content="PIScriptDoc" />
@@ -29,10 +29,10 @@
 <hr class="separator"/>
 
 <div id="brief">
-<p>A PixInsight script that sends notifications and images directly to your phone via Telegram or iMessage. <a href="#__contents__">[more]</a></p></div>
+<p>A PixInsight script that sends notifications and images directly to your phone via Telegram, iMessage, or Pushover. <a href="#__contents__">[more]</a></p></div>
 
 <div id="keywords">
-<p><strong>Keywords:</strong> Telegram, iMessage, Notifications, Image, PixInsight, SendMessageToPhone, Setup, Configuration, Messaging</p>
+<p><strong>Keywords:</strong> Telegram, iMessage, Pushover, Notifications, Image, PixInsight, SendMessageToPhone, Setup, Configuration, Messaging</p>
 </div>
 
 <h3 class="pidoc_sectionTitle" id="__toc__">Contents</h3>
@@ -53,7 +53,7 @@
    <h3 class="pidoc_sectionTitle">1&emsp;Introduction</h3>
    <p class="pidoc_sectionToggleButton" onclick="pidoc_toggleSection( 'Introduction', this );">[hide]</p>
    <div id="Introduction">
-<p>The <strong>SendMessageToPhone</strong> script allows users to send images to their phones directly via <em>Telegram</em> or <em>iMessage</em> (Mac only). This script also serves as the central configurator of things like the NotificationEventScript</p>
+<p>The <strong>SendMessageToPhone</strong> script allows users to send images to their phones directly via <em>Telegram</em>, <em>iMessage</em> (Mac only), or <em>Pushover</em>. This script also serves as the central configurator of things like the NotificationEventScript.</p>
 <p>This document will guide you through the process of setting up the <strong>SendMessageToPhone</strong> script and using it to send notifications.</p>
    </div>
 </div>
@@ -62,23 +62,25 @@
    <h3 class="pidoc_sectionTitle">2&emsp;Setup</h3>
    <p class="pidoc_sectionToggleButton" onclick="pidoc_toggleSection( 'Setup', this );">[hide]</p>
    <div id="Setup">
-<p>In order to use the <strong>SendMessageToPhone</strong> script, you need to configure it to send messages and images via your preferred messaging platform: <em>Telegram</em> or <em>iMessage</em>. Follow the detailed steps below to set it up.</p>
+<p>In order to use the <strong>SendMessageToPhone</strong> script, you need to configure it to send messages and images via your preferred messaging platform: <em>Telegram</em>, <em>iMessage</em>, or <em>Pushover</em>. Follow the detailed steps below to set it up.</p>
 <p><strong>Step 1</strong>: Open the <em>SendMessageToPhone</em> script in <em>PixInsight's Script Menu</em>.</p>
 <p><strong>Step 2</strong>: Select the messaging platform you would like to use:</p>
 
 <ul class="pidoc_list">
 <li><em>Telegram</em></li>
 <li><em>iMessage</em></li>
+<li><em>Pushover</em></li>
 </ul>
 
 <p><strong>Step 3</strong>: Configure the necessary fields</p>
 
 <ul class="pidoc_list">
 <li> <strong>For Telegram</strong>: Enter your <em>Telegram Bot Token</em>. You can obtain the token by creating a bot with <em>BotFather</em> in Telegram Enter the <em>Telegram Chat ID</em>. This can be found by visiting <em>https://api.telegram.org/bot&lt;YourBotToken&gt;/getUpdates</em>, where you replace <em>&lt;YourBotToken&gt;</em> with the token you got from <em>BotFather</em>. <br/><img src="images/configuring_telegramBot.png" alt=""/>
-Example of Telegram Token and Chat ID configuration</li>
-<li><strong>For iMessage</strong>: Enter the recipient's <em>AppleID</em> Note: iMessage sending is only supported on macOS. If you're running the script on another platform, please use Telegram instead</li>
+</li>
+<li><strong>For iMessage</strong>: Enter the recipient's <em>AppleID</em> Note: iMessage sending is only supported on macOS. If you're running the script on another platform, please use Telegram or Pushover instead</li>
+<li><strong>For Pushover</strong>: Enter your <em>User Key</em> and <em>App Token</em>. You can obtain these by creating an account at <em>https://pushover.net</em> and registering an application. Pushover supports image attachments. The script will send both a text message and the active image as a JPEG.</li>
 <li><strong>Autostretch</strong>: If your target image is still in the linear phase, it's a good idea to do an autostretch on the image, as a non-stretched JPEG will generally show up all-black</li>
-<li><strong>Linked</strong>: For color images, this determines whether the autostretch should be linekd or unlinked. The option is ignored for mono images.</li>
+<li><strong>Linked</strong>: For color images, this determines whether the autostretch should be linked or unlinked. The option is ignored for mono images.</li>
 </ul>
 
 <p><strong>Step 4</strong>: Run the script</p>
@@ -102,7 +104,8 @@ Example of Telegram Token and Chat ID configuration</li>
 
 <ul class="pidoc_list">
 <li><em>Telegram</em>: Requires <em>curl</em> to be installed and working. Make sure your system has internet access.</li>
-<li><em>iMessage</em>: Only available on macOS. If you are using Windows or Linux, you need to use <em>Telegram</em>.</li>
+<li><em>iMessage</em>: Only available on macOS. If you are using Windows or Linux, you need to use <em>Telegram</em> or <em>Pushover</em>.</li>
+<li><em>Pushover</em>: Requires <em>curl</em>. Your image must be converted to a JPEG, and its size must comply with Pushover limits (currently 2.5MB max). If the image is too large, the script will attempt to downsample it.</li>
 </ul>
 
    </div>
@@ -116,8 +119,15 @@ Example of Telegram Token and Chat ID configuration</li>
 <p><strong>No notifications received?</strong></p>
 
 <ul class="pidoc_list">
-<li>Double-check your Telegram Bot Token and Chat ID (for Telegram) or Recipient (for iMessage).</li>
-<li>Ensure that <em>curl</em> is working properly if you are using Telegram.</li>
+<li>Double-check your Telegram Bot Token and Chat ID (for Telegram), Recipient (for iMessage), or User Key / App Token (for Pushover).</li>
+<li>Ensure that <em>curl</em> is working properly and is available in your system path.</li>
+</ul>
+
+<p><strong>Image not received via Pushover</strong></p>
+
+<ul class="pidoc_list">
+<li>Ensure the image is not too large. The script automatically reduces the image size if it exceeds recommended limits, but Pushover has a strict 2.5MB file limit.</li>
+<li>Make sure the file is being saved as a valid JPEG and your API keys are correct.</li>
 </ul>
 
 <p><strong>Error: &quot;No valid target image found&quot;</strong></p>
@@ -136,7 +146,7 @@ Example of Telegram Token and Chat ID configuration</li>
 </div>
 
 <div id="footer">
-   <p>Generated by the PixInsight Documentation Compiler script version 1.7.1 on 2025-04-29 22:42:22 UTC</p>
+   <p>Generated by the PixInsight Documentation Compiler script version 1.7.1 on 2025-05-20 19:15:46 UTC</p>
 </div>
 <br/>
 <br/>
