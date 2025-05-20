@@ -6,17 +6,16 @@
     </p>
    </description>
    <platform os="all" arch="noarch" version="1.8.9-2:1.9.99">
-      <package fileName="TheSpaceKoalaScripts_20250514.zip" sha1="f36c477c57dea6fa0c78a4900c4c87b9da652c1a" type="script" releaseDate="20250514">
+      <package fileName="TheSpaceKoalaScripts_20250520.zip" sha1="698169d60c9c6fa4e93593c55ea06a4ecf03edec" type="script" releaseDate="20250520">
          <title>
         The Space Koala Script Repository
       </title>
          <description>
             <p>
-          - [x] fixed some errors that were introduced after latest WBPP updates
-          - [x] fixed the issue where debayering only happened if calibration was done
+          - support for Pushover
         </p>
          </description>
       </package>
    </platform>
 </xri>
-<Signature developerId="Luca Bartek" timestamp="2025-05-14T22:39:40.446Z" encoding="Base64">6mWGBUkzLtI85Y1+EWnKlPOl5Vwi2hU/qsqUYVq+w+0zKQI2mKdBpDsXyTDXm8m8B5XNQUPf54kkb8LfSLIsBQ==</Signature>
+<Signature developerId="Luca Bartek" timestamp="2025-05-20T19:20:34.515Z" encoding="Base64">EztF9NvS8wcS7Zy7QGE/dMQcwUfe0fWNrYMVglyIFK1l2BnnjRXUzaZS61iYfOavXQ2Vig5TnU9EdFEsmT9NDg==</Signature>
