@@ -6,16 +6,16 @@
     </p>
    </description>
    <platform os="all" arch="noarch" version="1.8.9-2:1.9.99">
-      <package fileName="TheSpaceKoalaScripts_20250520.zip" sha1="698169d60c9c6fa4e93593c55ea06a4ecf03edec" type="script" releaseDate="20250520">
+      <package fileName="TheSpaceKoalaScripts_20250521.zip" sha1="14c591bde26699ec8f06029ab2dc6f0b3dc55aa2" type="script" releaseDate="20250521">
          <title>
-        The Space Koala Script Repository
+        Pushover Support and fixes
       </title>
          <description>
             <p>
-          - support for Pushover
+          - fixed issue when autostretching monochrome images
         </p>
          </description>
       </package>
    </platform>
 </xri>
-<Signature developerId="Luca Bartek" timestamp="2025-05-20T19:20:34.515Z" encoding="Base64">EztF9NvS8wcS7Zy7QGE/dMQcwUfe0fWNrYMVglyIFK1l2BnnjRXUzaZS61iYfOavXQ2Vig5TnU9EdFEsmT9NDg==</Signature>
+<Signature developerId="Luca Bartek" timestamp="2025-05-21T20:47:48.434Z" encoding="Base64">KasjADncRPXX5H1ygqpZ49ajzTdZynMSUj4FKUhcU/teq6wb/K4UiYjjagGdc0jJ3KybTaFdWdpMMpVOXK3pBg==</Signature>
