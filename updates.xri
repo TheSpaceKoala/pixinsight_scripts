@@ -6,16 +6,16 @@
     </p>
    </description>
    <platform os="all" arch="noarch" version="1.8.9-2:1.9.99">
-      <package fileName="TheSpaceKoalaScripts_20250521.zip" sha1="14c591bde26699ec8f06029ab2dc6f0b3dc55aa2" type="script" releaseDate="20250521">
+      <package fileName="TheSpaceKoalaScripts_20250604.zip" sha1="faf46817b27c5edf2dcc62a77ddf8948e4f542df" type="script" releaseDate="20250604">
          <title>
         Pushover Support and fixes
       </title>
          <description>
             <p>
-          - fixed issue when autostretching monochrome images
+          Fixed an issue saving telegram parameters the first time
         </p>
          </description>
       </package>
    </platform>
 </xri>
-<Signature developerId="Luca Bartek" timestamp="2025-05-21T20:50:58.455Z" encoding="Base64">pap3X83fbe6Jl/0g9FDHhGpa0T7a54yqTYiAACwI6eYrRsXztgXTJ+3v2pLgBSUOp0S8FGinQ3L5DNgh7DlUAA==</Signature>
+<Signature developerId="Luca Bartek" timestamp="2025-06-04T17:42:26.668Z" encoding="Base64">mzWxO/qwIuqi3pGws6EmcdIiXTeoLb9Vg/hOvs2Oy9gBkNuzqvflMHasm+iNrM5bGYRxTq7xz5gDow0o6d23DQ==</Signature>
