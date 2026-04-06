@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+   <title>PixInsight Reference Documentation | WBPP Multi Scope Stacker</title>
+   <meta name="keywords" content="WBPP, Multi Scope, MultiScopeStacker, PixInsight, Registration, Grouping, Post Groups" />
+   <meta name="author" content="Luca Bartek, Roberto Sartori" />
+   <meta name="description" content="A WBPP extension that regroups compatible POST light groups across different resolutions so they share one downstream registration and integration path." />
+   <meta name="robots" content="INDEX,FOLLOW" />
+   <meta name="generator" content="PixInsight Documentation Compiler script version 1.7.1" />
+   <meta name="pidoc-document-class" content="PIGenericDoc" />
+   <script type="text/javascript" src="../../pidoc/scripts/pidoc-utility.js"></script>
+   <link type="text/css" href="../../pidoc/css/pidoc-common.css" rel="stylesheet" />
+   <link type="text/css" href="../../pidoc/css/pidoc-highlight.css" rel="stylesheet" />
+   <link type="text/css" href="../../pidoc/css/pidoc-generic.css" rel="stylesheet" />
+   <link rel="icon" href="../../pidoc/icons/pidoc-icon.svg" />
+</head>
+<body>
+  <div style="position: fixed; top: 10px; left: 80px; background: #f8f8f8; padding: 5px 12px; border-radius: 8px; z-index: 9999;"><a href="../../index.html" style="text-decoration: none; color: #000;">← Back</a></div>
+<script type="text/javascript">
+   pidoc_generateDynamicContents();
+</script>
+
+<h1>WBPP Multi Scope Stacker</h1>
+<div id="authors">
+<p>By Luca Bartek, Roberto Sartori</p>
+</div>
+
+<hr class="separator"/>
+
+<div id="brief">
+<p>A WBPP extension that regroups compatible POST light groups across different resolutions so they share one downstream registration and integration path. <a href="#__contents__">[more]</a></p></div>
+
+<div id="keywords">
+<p><strong>Keywords:</strong> WBPP, Multi Scope, MultiScopeStacker, PixInsight, Registration, Grouping, Post Groups</p>
+</div>
+
+<h3 class="pidoc_sectionTitle" id="__toc__">Contents</h3>
+<p class="pidoc_sectionToggleButton" onclick="pidoc_toggleSection( 'toc', this );">[hide]</p>
+<div id="toc">
+<ul>
+<li class="pidoc_tocItem"><a href="#__Introduction__">1&emsp;Introduction</a></li>
+<li class="pidoc_tocItem"><a href="#__What_Problem_It_Solves__">2&emsp;What Problem It Solves</a></li>
+<li class="pidoc_tocItem"><a href="#__How_Regrouping_Works__">3&emsp;How Regrouping Works</a></li>
+<li class="pidoc_tocItem"><a href="#__What_Happens_During_a_Merge__">4&emsp;What Happens During a Merge</a></li>
+<li class="pidoc_tocItem"><a href="#__Where_It_Happens_In_The_Pipeline__">5&emsp;Where It Happens In The Pipeline</a></li>
+<li class="pidoc_tocItem"><a href="#__What_Stays_Standard_WBPP__">6&emsp;What Stays Standard WBPP</a></li>
+<li class="pidoc_tocItem"><a href="#__Why_Resolution_Differences_Are_Allowed__">7&emsp;Why Resolution Differences Are Allowed</a></li>
+<li class="pidoc_tocItem"><a href="#__Use_Cases__">8&emsp;Use Cases</a></li>
+<li class="pidoc_tocItem"><a href="#__Limitations__">9&emsp;Limitations</a></li>
+</ul>
+</div>
+
+<div id="__contents__">
+
+<div class="pidoc_section" id="__Introduction__">
+   <h3 class="pidoc_sectionTitle">1&emsp;Introduction</h3>
+   <p class="pidoc_sectionToggleButton" onclick="pidoc_toggleSection( 'Introduction', this );">[hide]</p>
+   <div id="Introduction">
+<p>The <strong>MultiScopeStacker</strong> is a specialized WBPP builder for multi-scope or mixed-resolution data sets.</p>
+<p>Its purpose is simple: if two or more POST light groups share the same POST keyword identity, or if they all have no POST keywords at all, they should be treated as one logical stack even when WBPP would normally keep them split because of differing frame sizes.</p>
+<p>Unlike the <strong>No Code Pipeline Builder</strong>, this script does not use a ProcessContainer-based automation layer. It modifies the WBPP pipeline directly.</p>
+   </div>
+</div>
+
+<div class="pidoc_section" id="__What_Problem_It_Solves__">
+   <h3 class="pidoc_sectionTitle">2&emsp;What Problem It Solves</h3>
+   <p class="pidoc_sectionToggleButton" onclick="pidoc_toggleSection( 'What_Problem_It_Solves', this );">[hide]</p>
+   <div id="What_Problem_It_Solves">
+<p>Standard WBPP grouping can separate otherwise compatible POST groups when image dimensions differ. In a multi-scope workflow, that is often not what the user wants.</p>
+<p>If those groups are meant to land on the same registration target and the same final stack, splitting them only by resolution creates extra groups, duplicate downstream work, and in some cases invalid empty donor groups after manual regrouping.</p>
+<p><strong>MultiScopeStacker</strong> addresses that by merging eligible POST groups before the downstream measurement and registration stages begin.</p>
+   </div>
+</div>
+
+<div class="pidoc_section" id="__How_Regrouping_Works__">
+   <h3 class="pidoc_sectionTitle">3&emsp;How Regrouping Works</h3>
+   <p class="pidoc_sectionToggleButton" onclick="pidoc_toggleSection( 'How_Regrouping_Works', this );">[hide]</p>
+   <div id="How_Regrouping_Works">
+<p>The script builds a regrouping key for active POST light groups that are not combined RGB groups.</p>
+<p>The key keeps these properties distinct:</p>
+
+<ul class="pidoc_list">
+<li><strong>imageType</strong></li>
+<li><strong>filter</strong></li>
+<li><strong>binning</strong></li>
+<li><strong>exposureTime</strong></li>
+<li><strong>isCFA</strong></li>
+<li><strong>associatedRGBchannel</strong></li>
+<li>the complete POST keyword set</li>
+</ul>
+
+<p>The important design decision is that frame size is intentionally <strong>not</strong> part of that regrouping key.</p>
+<p>That means:</p>
+
+<ul class="pidoc_list">
+<li>groups with the same POST keyword identity are merged even if their resolutions differ</li>
+<li>groups with different POST keyword identities remain separate</li>
+<li>groups that have no POST keywords at all are also allowed to merge with each other</li>
+</ul>
+
+   </div>
+</div>
+
+<div class="pidoc_section" id="__What_Happens_During_a_Merge__">
+   <h3 class="pidoc_sectionTitle">4&emsp;What Happens During a Merge</h3>
+   <p class="pidoc_sectionToggleButton" onclick="pidoc_toggleSection( 'What_Happens_During_a_Merge', this );">[hide]</p>
+   <div id="What_Happens_During_a_Merge">
+<p>When two POST groups resolve to the same regrouping key:</p>
+
+<ul class="pidoc_list">
+<li>the first matching group becomes the keeper group</li>
+<li>all FileItem objects from later matching groups are moved into the keeper</li>
+<li>exposure totals are updated on the keeper group</li>
+<li>automatic fast-integration mode is re-evaluated for the enlarged keeper group</li>
+<li>donor groups are marked inactive and purgeable</li>
+<li>donor groups are removed from the real WBPP groups manager</li>
+</ul>
+
+<p>Removing the donor groups from the groups manager is important because it prevents empty zero-frame POST groups from surviving into later validation or integration steps.</p>
+   </div>
+</div>
+
+<div class="pidoc_section" id="__Where_It_Happens_In_The_Pipeline__">
+   <h3 class="pidoc_sectionTitle">5&emsp;Where It Happens In The Pipeline</h3>
+   <p class="pidoc_sectionToggleButton" onclick="pidoc_toggleSection( 'Where_It_Happens_In_The_Pipeline', this );">[hide]</p>
+   <div id="Where_It_Happens_In_The_Pipeline">
+<p>The regrouping is applied immediately after WBPP builds the POST groups and before the rest of the normal POST pipeline is queued.</p>
+<p>In practice, the merged POST groups are then used by the standard WBPP operations that follow:</p>
+
+<ul class="pidoc_list">
+<li>reference-frame data preparation</li>
+<li>measurements</li>
+<li>frame selection, when enabled</li>
+<li>bad-frame rejection</li>
+<li>reference-frame selection</li>
+<li>registration</li>
+<li>local-normalization reference selection</li>
+<li>local normalization</li>
+<li>image integration or fast integration</li>
+<li>drizzle integration</li>
+<li>auto-crop</li>
+<li>RGB recombination</li>
+<li>plate solving</li>
+</ul>
+
+<p>This timing is what makes the script useful: the merged groups share the same downstream registration target selection and the same final stack path instead of behaving like separate islands.</p>
+   </div>
+</div>
+
+<div class="pidoc_section" id="__What_Stays_Standard_WBPP__">
+   <h3 class="pidoc_sectionTitle">6&emsp;What Stays Standard WBPP</h3>
+   <p class="pidoc_sectionToggleButton" onclick="pidoc_toggleSection( 'What_Stays_Standard_WBPP', this );">[hide]</p>
+   <div id="What_Stays_Standard_WBPP">
+<p>After regrouping, the script continues by scheduling normal WBPP operations. It does not replace registration, integration, drizzle, local normalization, or plate solving with custom implementations.</p>
+<p>The only behavioral change is the earlier regrouping of compatible POST groups, plus a small WBPP utility patch that preserves already-known drizzle and local-normalization sidecar references when target frame tables are generated.</p>
+   </div>
+</div>
+
+<div class="pidoc_section" id="__Why_Resolution_Differences_Are_Allowed__">
+   <h3 class="pidoc_sectionTitle">7&emsp;Why Resolution Differences Are Allowed</h3>
+   <p class="pidoc_sectionToggleButton" onclick="pidoc_toggleSection( 'Why_Resolution_Differences_Are_Allowed', this );">[hide]</p>
+   <div id="Why_Resolution_Differences_Are_Allowed">
+<p>The core assumption behind <strong>MultiScopeStacker</strong> is that differing source resolutions are not a problem when those frames are going to be registered onto the same target anyway.</p>
+<p>By regrouping before measurement and registration, the script lets WBPP analyze and align the full merged set as one logical group. That is the main reason the regrouping must happen early and not after registration or integration.</p>
+   </div>
+</div>
+
+<div class="pidoc_section" id="__Use_Cases__">
+   <h3 class="pidoc_sectionTitle">8&emsp;Use Cases</h3>
+   <p class="pidoc_sectionToggleButton" onclick="pidoc_toggleSection( 'Use_Cases', this );">[hide]</p>
+   <div id="Use_Cases">
+
+<ul class="pidoc_list">
+<li>combining data from two telescopes that used the same filter and the same POST tags but produced different image dimensions</li>
+<li>merging equivalent light groups across nights or rigs when POST keywords were deliberately used to define the intended stack identity</li>
+<li>preventing duplicated registration and integration paths for data that should become one final master</li>
+</ul>
+
+   </div>
+</div>
+
+<div class="pidoc_section" id="__Limitations__">
+   <h3 class="pidoc_sectionTitle">9&emsp;Limitations</h3>
+   <p class="pidoc_sectionToggleButton" onclick="pidoc_toggleSection( 'Limitations', this );">[hide]</p>
+   <div id="Limitations">
+
+<ul class="pidoc_list">
+<li>The regrouping only affects active POST light groups that are not combined RGB groups.</li>
+<li>Groups with different filters, binning, exposure time, CFA state, RGB channel identity, or POST keyword identity are intentionally kept separate.</li>
+<li>This script is a direct WBPP builder and does not include the ProcessContainer-based custom-step system from <strong>No Code Pipeline Builder</strong>.</li>
+<li>The script assumes that resolution-only POST splits are safe to collapse for the intended workflow. If the POST tags do not represent the true intended stack identity, regrouping can merge data that should have remained separate.</li>
+</ul>
+
+   </div>
+</div>
+
+<hr class="separator"/>
+
+<div id="copyright">
+   <p>Copyright &copy; (c) 2025 Luca Bartek, Roberto Sartori</p>
+</div>
+
+<div id="footer">
+   <p>Generated by the PixInsight Documentation Compiler script version 1.7.1 on 2026-04-06 09:29:25 UTC</p>
+</div>
+<br/>
+<br/>
+
+</div> <!-- contents -->
+
+</body>
+</html>
