@@ -6,25 +6,26 @@
     </p>
    </description>
    <platform os="all" arch="noarch" version="1.8.9-2:1.9.99">
-      <package fileName="TheSpaceKoalaScripts_20260406.zip" sha1="a5e32d1a30f0d19abed017b7730ed8363d8f550f" type="script" releaseDate="20260406">
+      <package fileName="TheSpaceKoalaScripts_20260525.zip" sha1="8519584e91604136176efb6c08b9344be7b4d336" type="script" releaseDate="20260525">
          <title>
-        Multi-scope stacking, Discord support, and major no-code pipeline builder fixes
+        SendImageToPhone V8 compatibility update and legacy Telegram event script retirement
       </title>
+         <remove>
+        src/scripts/TheSpaceKoala/TelegramEventScript.js,
+        doc/docs/WBPP Telegram Notification Event Script
+      </remove>
          <description>
             <p>
-          Updated the WBPP No Code Pipeline Builder with the recent fixes and improvements, including Frame Selection hooks,
-          better onPostProcessEnd master handling, and preservation of drizzle and local-normalization sidecar references.
+          Updated the scripts to PixInsight PJSR 2.0 with the V8 JavaScript runtime.
             </p>
             <p>
-          Added the new MultiScopeStacker script for multi-scope data sets. It regroups compatible POST light groups when their POST tags match,
-          even if WBPP originally split them by resolution, so they can continue through one shared downstream measurement, registration, and integration path.
+          Retires the legacy TelegramEventScript.js and removes the installed file and legacy documentation on update so users transition to the newer NotificationEventScript workflow.
             </p>
             <p>
-          Added Discord webhook support to SendMessageToPhone and NotificationEventScript, including message and image delivery,
-          updated configuration persistence, and the related documentation updates for webhook setup. Special thanks to Apoorva Iyer for the Discord integration.
+          This release also carries the current notification-script updates, including Discord support and the latest configuration/documentation changes.
             </p>
          </description>
       </package>
    </platform>
 </xri>
-<Signature developerId="Luca Bartek" timestamp="2026-04-06T09:43:13.040Z" encoding="Base64">b59mlzX7XM3hH9W2llzA8PgbPEi8QuNYL/Z6qv/uqT+bc3TDwc71Zx+5qPK3pAP6xlb6yAn9UqUyU2hiHXlBBA==</Signature>
+<Signature developerId="Luca Bartek" timestamp="2026-05-24T23:37:28.968Z" encoding="Base64">S/uzS6FHMJ0vW2Svty17fvpVAiiJso5+ceccYaXcKQLJfGh6ZB2wvjZCCa9oSdJ6EyuUXo+jM4LWE9EwzApOCA==</Signature>
