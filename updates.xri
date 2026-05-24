@@ -6,12 +6,16 @@
     </p>
    </description>
    <platform os="all" arch="noarch" version="1.8.9-2:1.9.99">
-      <package fileName="TheSpaceKoalaScripts_20260525.zip" sha1="8519584e91604136176efb6c08b9344be7b4d336" type="script" releaseDate="20260525">
+      <package fileName="TheSpaceKoalaScripts_20260525_2.zip" sha1="4d21ca11471e941512dc6d6eb83ad5c03c8b69cb" type="script" releaseDate="20260525">
          <title>
         SendImageToPhone V8 compatibility update and legacy Telegram event script retirement
       </title>
          <remove>
         src/scripts/TheSpaceKoala/TelegramEventScript.js,
+        src/scripts/TheSpaceKoala/TelegramEventScript.xsgn,
+        src/scripts/TheSpaceKoala/SendImageToTelegram.js,
+        src/scripts/TheSpaceKoala/SendImageToTelegram.xsgn,
+        doc/scripts/SendImageToTelegram,
         doc/docs/WBPP Telegram Notification Event Script
       </remove>
          <description>
@@ -19,7 +23,7 @@
           Updated the scripts to PixInsight PJSR 2.0 with the V8 JavaScript runtime.
             </p>
             <p>
-          Retires the legacy TelegramEventScript.js and removes the installed file and legacy documentation on update so users transition to the newer NotificationEventScript workflow.
+          Retires the legacy TelegramEventScript.js and removes the installed file and legacy documentation on update so users transition to the newer NotificationEventScript workflow. This update also removes the standalone SendImageToTelegram.js script and signature.
             </p>
             <p>
           This release also carries the current notification-script updates, including Discord support and the latest configuration/documentation changes.
@@ -28,4 +32,4 @@
       </package>
    </platform>
 </xri>
-<Signature developerId="Luca Bartek" timestamp="2026-05-24T23:37:28.968Z" encoding="Base64">S/uzS6FHMJ0vW2Svty17fvpVAiiJso5+ceccYaXcKQLJfGh6ZB2wvjZCCa9oSdJ6EyuUXo+jM4LWE9EwzApOCA==</Signature>
+<Signature developerId="Luca Bartek" timestamp="2026-05-24T23:48:10.021Z" encoding="Base64">gn5jYGSG+PrqMpv45/4sdXl8BZ/UCpSOLsQixRLTe1TTPQEIsOYiQA/6YFvrQkNBrabP7OBktCLfUGqBAYmWAQ==</Signature>
