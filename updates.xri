@@ -6,9 +6,9 @@
     </p>
    </description>
    <platform os="all" arch="noarch" version="1.8.9-2:1.9.99">
-      <package fileName="TheSpaceKoalaScripts_20260730.zip" sha1="a41a89bc5aeb6a1fb4a97b12667e9b2bd1538819" type="script" releaseDate="20260730">
+      <package fileName="TheSpaceKoalaScripts_20260730_2.zip" sha1="3c7dd2ce4ad551ed117384247b03f9f4e1ac1113" type="script" releaseDate="20260730">
          <title>
-        WBPP 3.0.1 compatibility and notification reliability update
+        WBPP 3.0.1 compatibility and installer permission hotfix
       </title>
          <remove>
         src/scripts/TheSpaceKoala/TelegramEventScript.js,
@@ -28,8 +28,11 @@
             <p>
           Improves notification scripts with self-contained event-script utilities, corrected image resampling, text-only sending without an active image, and a Windows curl SSL compatibility retry for affected older curl installations.
             </p>
+            <p>
+          Corrects packaged file permissions so PixInsight installations under /Applications can read all updated scripts after installation.
+            </p>
          </description>
       </package>
    </platform>
 </xri>
-<Signature developerId="Luca Bartek" timestamp="2026-07-29T23:40:23.774Z" encoding="Base64">wMQC8+uRknbnkoBCbI6aAkOIAsU/1btf2FM7R+fS2Yqa8F443BlQ4LO4HO8vG4ooS15BUauR4c5l4Bj5YgokAA==</Signature>
+<Signature developerId="Luca Bartek" timestamp="2026-07-29T23:53:05.800Z" encoding="Base64">OVJwErAw96A7X9k252BZ3Gl/KBk/udfsPk68lYNNz95cMYidCz72SEH+WYXqVkrlp9A8OqnmwGst40j572mWAQ==</Signature>
