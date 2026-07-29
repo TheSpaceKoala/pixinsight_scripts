@@ -6,9 +6,9 @@
     </p>
    </description>
    <platform os="all" arch="noarch" version="1.8.9-2:1.9.99">
-      <package fileName="TheSpaceKoalaScripts_20260525_2.zip" sha1="4d21ca11471e941512dc6d6eb83ad5c03c8b69cb" type="script" releaseDate="20260525">
+      <package fileName="TheSpaceKoalaScripts_20260730.zip" sha1="a41a89bc5aeb6a1fb4a97b12667e9b2bd1538819" type="script" releaseDate="20260730">
          <title>
-        SendImageToPhone V8 compatibility update and legacy Telegram event script retirement
+        WBPP 3.0.1 compatibility and notification reliability update
       </title>
          <remove>
         src/scripts/TheSpaceKoala/TelegramEventScript.js,
@@ -20,16 +20,16 @@
       </remove>
          <description>
             <p>
-          Updated the scripts to PixInsight PJSR 2.0 with the V8 JavaScript runtime.
+          Fixes second-run WBPP measurement failures caused by invalid process table rows and preserves the Image Registration reuse-reference-frames preference.
             </p>
             <p>
-          Retires the legacy TelegramEventScript.js and removes the installed file and legacy documentation on update so users transition to the newer NotificationEventScript workflow. This update also removes the standalone SendImageToTelegram.js script and signature.
+          Updates NoCodePipelineBuilder and MultiScopeStacker for WBPP 3.0.1, including current constants, single-pass linear pattern subtraction scheduling, and corrected fast-integration handling.
             </p>
             <p>
-          This release also carries the current notification-script updates, including Discord support and the latest configuration/documentation changes.
+          Improves notification scripts with self-contained event-script utilities, corrected image resampling, text-only sending without an active image, and a Windows curl SSL compatibility retry for affected older curl installations.
             </p>
          </description>
       </package>
    </platform>
 </xri>
-<Signature developerId="Luca Bartek" timestamp="2026-05-24T23:48:10.021Z" encoding="Base64">gn5jYGSG+PrqMpv45/4sdXl8BZ/UCpSOLsQixRLTe1TTPQEIsOYiQA/6YFvrQkNBrabP7OBktCLfUGqBAYmWAQ==</Signature>
+<Signature developerId="Luca Bartek" timestamp="2026-07-29T23:40:23.774Z" encoding="Base64">wMQC8+uRknbnkoBCbI6aAkOIAsU/1btf2FM7R+fS2Yqa8F443BlQ4LO4HO8vG4ooS15BUauR4c5l4Bj5YgokAA==</Signature>
