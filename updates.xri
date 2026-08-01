@@ -6,9 +6,9 @@
     </p>
    </description>
    <platform os="all" arch="noarch" version="1.8.9-2:1.9.99">
-      <package fileName="TheSpaceKoalaScripts_20260730_2.zip" sha1="3c7dd2ce4ad551ed117384247b03f9f4e1ac1113" type="script" releaseDate="20260730">
+      <package fileName="TheSpaceKoalaScripts_20260801.zip" sha1="2fea25a3ce0db787e29ca6b5866b104b2259ecf3" type="script" releaseDate="20260801">
          <title>
-        WBPP 3.0.1 compatibility and installer permission hotfix
+        WBPP reuse-reference and notification validation fixes
       </title>
          <remove>
         src/scripts/TheSpaceKoala/TelegramEventScript.js,
@@ -20,19 +20,16 @@
       </remove>
          <description>
             <p>
-          Fixes second-run WBPP measurement failures caused by invalid process table rows and preserves the Image Registration reuse-reference-frames preference.
+          Fixes NotificationEventScript validation under WBPP 3.0.1 by removing syntax that is forbidden in its strict V8 execution context.
             </p>
             <p>
-          Updates NoCodePipelineBuilder and MultiScopeStacker for WBPP 3.0.1, including current constants, single-pass linear pattern subtraction scheduling, and corrected fast-integration handling.
+          Fixes Measurements failures in NoCodePipelineBuilder and MultiScopeStacker when Reuse Last Registration Reference Frames is enabled by ensuring WBPP reference-frame data is prepared whenever Measurements is scheduled.
             </p>
             <p>
-          Improves notification scripts with self-contained event-script utilities, corrected image resampling, text-only sending without an active image, and a Windows curl SSL compatibility retry for affected older curl installations.
-            </p>
-            <p>
-          Corrects packaged file permissions so PixInsight installations under /Applications can read all updated scripts after installation.
+          Includes the previous WBPP 3.0.1 compatibility, notification reliability, Windows curl compatibility, and installer permission fixes.
             </p>
          </description>
       </package>
    </platform>
 </xri>
-<Signature developerId="Luca Bartek" timestamp="2026-07-29T23:53:05.800Z" encoding="Base64">OVJwErAw96A7X9k252BZ3Gl/KBk/udfsPk68lYNNz95cMYidCz72SEH+WYXqVkrlp9A8OqnmwGst40j572mWAQ==</Signature>
+<Signature developerId="Luca Bartek" timestamp="2026-08-01T20:17:19.755Z" encoding="Base64">K2LY0XqR7fUA7zwhdX30+S+gtZPYna+3OAHHI3x8/pxmSPKFdMquki2PQwTV5re4UVE0fPCHEll4mkDdmrvXAg==</Signature>
