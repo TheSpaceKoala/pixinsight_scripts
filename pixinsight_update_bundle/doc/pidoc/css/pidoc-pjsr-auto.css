@@ -1,0 +1,100 @@
+/*
+ * PixInsight Reference Documentation System
+ *
+ * Style sheet for automatically generated PJSR documentation
+ * Updated 2023 March 8
+ *
+ * Copyright (c) 2010-2023 Pleiades Astrophoto S.L. All Rights Reserved.
+ */
+
+/*
+ * Hack Font
+ */
+
+@font-face {
+   font-family: 'Hack';
+   src: url('../../../rsc/fonts/Hack/ttf/Hack-Regular.ttf') format('truetype');
+   font-weight: normal;
+   font-style: normal;
+}
+
+@font-face {
+   font-family: 'Hack';
+   src: url('../../../rsc/fonts/Hack/ttf/Hack-Italic.ttf') format('truetype');
+   font-weight: normal;
+   font-style: italic;
+}
+
+@font-face {
+   font-family: 'Hack';
+   src: url('../../../rsc/fonts/Hack/ttf/Hack-Bold.ttf') format('truetype');
+   font-weight: bold;
+   font-style: normal;
+}
+
+@font-face {
+   font-family: 'Hack';
+   src: url('../../../rsc/fonts/Hack/ttf/Hack-BoldItalic.ttf') format('truetype');
+   font-weight: bold;
+   font-style: italic;
+}
+
+/* -------------------------------------------------------------------------- */
+
+body {
+   margin: 0;
+   padding: 1em;
+   font-family: "Hack","DejaVu Sans Mono","Courier New",Courier,monospace;
+   font-size: 9pt;
+}
+
+table {
+   width: 100%;
+   margin-bottom: 1.5em;
+   border-collapse: collapse;
+}
+table:nth-last {
+   margin-bottom: 0;
+}
+
+th, td {
+   text-align: left;
+   white-space: normal;
+   padding: 0.5em;
+   text-indent: -2em;
+   padding-left: 2.5em;
+   border: 1px solid #a0a0a0;
+}
+th {
+   background-color: #dcf0f8;
+   font-size: 10pt;
+   font-weight: bold;
+}
+#properties th {
+   background-color: rgba( 255, 169, 153, .40 )
+}
+#static-properties th {
+   background-color: rgba( 255, 253, 153, .40 )
+}
+#event-handlers th {
+   background-color: rgba( 204, 255, 153, .40 )
+}
+#constructors th {
+   background-color: rgba( 207, 192, 255, .40 )
+}
+#methods th {
+   background-color: rgba( 154, 227, 255, .40 )
+}
+#static-methods th {
+   background-color: rgba( 154, 255, 245, .40 )
+}
+#constants th {
+   background-color: rgba( 255, 202, 127, .40 )
+}
+
+tr:nth-child(even) {
+   background-color: rgba( 0, 0, 0, .03 )
+}
+tr:nth-child(odd) {
+   background-color: rgba( 0, 0, 0, .10 )
+}

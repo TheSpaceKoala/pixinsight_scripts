@@ -1,0 +1,80 @@
+/*
+ * PixInsight Reference Documentation System
+ *
+ * Style sheet for the PIJSObjectDoc documentation class
+ * Updated 2017 June 21
+ *
+ * Copyright (c) 2010-2017 Pleiades Astrophoto S.L. All Rights Reserved.
+ */
+
+body {
+   background-position: top left;
+   background-attachment: fixed;
+   background-repeat: no-repeat;
+   background-image: url( '../../pidoc/titles/pixinsight_javascript_runtime_documentation_title_vert.en.svg' );
+   background-size: 40px auto;
+}
+
+.pidoc_objectItem {
+   background: #f0f0f0;
+   border: 2px solid #e0e0e0;
+   margin-top: 1em;
+   margin-bottom: 1em;
+}
+.pidoc_objectItem tr:nth-child(odd) {
+   background-color: #e4e4e4;
+}
+.pidoc_objectItem tr:nth-child(even) {
+   background-color: #ebebeb;
+}
+.pidoc_objectItem td {
+   padding: 0.7em;
+}
+
+.pidoc_objectFormalDescription {
+   font-weight: bold;
+   color: #404AAA;
+   padding: 0.5em;
+   margin-top: 0.5em;
+}
+
+.pidoc_objectDescription {
+   padding-left: 2em;
+   padding-right: 1em;
+}
+.pidoc_objectDescription table { /* parameters */
+   width: 100%;
+}
+.pidoc_objectDescription td:last-child { /* parameter description */
+   width: 100%;
+}
+
+.pidoc_readOnlyProperty {
+}
+
+.pidoc_readOnlyPropertyTag {
+   font-size: 85%;
+   font-weight: normal;
+   color: #A03C46;
+}
+
+.pidoc_objectToc {
+   border-collapse: collapse;
+   background: transparent;
+}
+.pidoc_objectToc tr {
+   background: transparent;
+}
+.pidoc_objectToc td {
+   background: transparent;
+   border: none;
+   line-height: 1.22em;
+   padding: 0.50em;
+}
+.pidoc_objectToc p {
+   display: block;
+}
+.pidoc_objectTocType {
+   text-align: right;
+   min-width: 10em;
+}
