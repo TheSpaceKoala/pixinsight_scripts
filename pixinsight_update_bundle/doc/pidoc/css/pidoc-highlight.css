@@ -1,0 +1,248 @@
+/*
+ * PixInsight Reference Documentation System
+ *
+ * Style sheet for syntax highlighting of \code blocks.
+ * Updated 2022 March 12
+ *
+ * Copyright (c) 2010-2022 Pleiades Astrophoto S.L. All Rights Reserved.
+ */
+
+.pidoc_sh_keyword {
+   color: inherit;
+   background: transparent;
+   font-weight: bold;
+   font-style: normal;
+   text-decoration: none;
+}
+
+.pidoc_sh_ecmaKeyword {
+   color: #708090;
+   background: transparent;
+   font-weight: bold;
+   font-style: normal;
+   text-decoration: none;
+}
+
+.pidoc_sh_pclKeyword {
+   color: inherit;
+   background: transparent;
+   font-weight: bold;
+   font-style: normal;
+   text-decoration: none;
+}
+
+.pidoc_sh_qtKeyword {
+   color: #00a0ff;
+   background: transparent;
+   font-weight: bold;
+   font-style: normal;
+   text-decoration: none;
+}
+
+.pidoc_sh_object {
+   color: #0000cd;
+   background: transparent;
+   font-weight: bold;
+   font-style: normal;
+   text-decoration: none;
+}
+
+.pidoc_sh_externalObject {
+   color: #6b8e23;
+   background: transparent;
+   font-weight: bold;
+   font-style: normal;
+   text-decoration: none;
+}
+
+.pidoc_sh_preprocessor {
+   color: #008000;
+   background: transparent;
+   font-weight: normal;
+   font-style: normal;
+   text-decoration: none;
+}
+
+.pidoc_sh_pclMacro {
+   color: #9200ff;
+   background: transparent;
+   font-weight: normal;
+   font-style: normal;
+   text-decoration: none;
+}
+
+.pidoc_sh_function {
+   color: #00505a;
+   background: transparent;
+   font-weight: normal;
+   font-style: normal;
+   text-decoration: none;
+}
+
+.pidoc_sh_number {
+   color: #dc143c;
+   background: transparent;
+   font-weight: normal;
+   font-style: normal;
+   text-decoration: none;
+}
+
+.pidoc_sh_hexNumber {
+   color: #dc143c;
+   background: transparent;
+   font-weight: normal;
+   font-style: normal;
+   text-decoration: none;
+}
+
+.pidoc_sh_octNumber {
+   color: #dc143c;
+   background: transparent;
+   font-weight: normal;
+   font-style: normal;
+   text-decoration: none;
+}
+
+.pidoc_sh_regExp {
+   color: #845a28;
+   background: transparent;
+   font-weight: normal;
+   font-style: normal;
+   text-decoration: none;
+}
+
+.pidoc_sh_quotation {
+   color: #a52a2a;
+   background: transparent;
+   font-weight: normal;
+   font-style: normal;
+   text-decoration: none;
+}
+
+.pidoc_sh_singleLineComment {
+   color: #6a5acd;
+   background: transparent;
+   font-weight: normal;
+   font-style: italic;
+   text-decoration: none;
+}
+
+.pidoc_sh_multiLineComment {
+   color: #6a5acd;
+   background: transparent;
+   font-weight: normal;
+   font-style: italic;
+   text-decoration: none;
+}
+
+.pidoc_sh_alert {
+   color: #ff0000;
+   background: #c8ffc8;
+   font-weight: bold;
+   font-style: normal;
+   text-decoration: none;
+}
+
+.pidoc_sh_pidocCommand {
+   color: #800000;
+   background: transparent;
+   font-weight: bold;
+   font-style: normal;
+   text-decoration: none;
+}
+
+.pidoc_sh_pidocSpecialCommand {
+   color: #ff0000;
+   background: #00ff00;
+   font-weight: normal;
+   font-style: normal;
+   text-decoration: none;
+}
+
+.pidoc_sh_pidocReference {
+   color: #0000ff;
+   background: #faeaa0;
+   font-weight: normal;
+   font-style: normal;
+   text-decoration: none;
+}
+
+.pidoc_sh_pidocBlockDelimiter {
+   color: inherit;
+   background: transparent;
+   font-weight: bold;
+   font-style: normal;
+   text-decoration: none;
+}
+
+.pidoc_sh_pidocCharacterEntity {
+   color: #0000ff;
+   background: #e0ffff;
+   font-weight: normal;
+   font-style: normal;
+   text-decoration: none;
+}
+
+.pidoc_sh_pidocParameters {
+   color: inherit;
+   background: transparent;
+   font-weight: normal;
+   font-style: italic;
+   text-decoration: none;
+}
+
+.pidoc_sh_pidocVerbatimBlock {
+   color: #008000;
+   background: transparent;
+   font-weight: normal;
+   font-style: normal;
+   text-decoration: none;
+}
+
+.pidoc_sh_pidocComment {
+   color: #6a5acd;
+   background: transparent;
+   font-weight: normal;
+   font-style: italic;
+   text-decoration: none;
+}
+
+.pidoc_sh_xmlTag {
+   color: inherit;
+   background: transparent;
+   font-weight: bold;
+   font-style: normal;
+   text-decoration: none;
+}
+
+.pidoc_sh_xmlAttributeName {
+   color: #0000cd;
+   background: transparent;
+   font-weight: bold;
+   font-style: normal;
+   text-decoration: none;
+}
+
+.pidoc_sh_xmlAttributeValue {
+   color: #a52a2a;
+   background: transparent;
+   font-weight: normal;
+   font-style: normal;
+   text-decoration: none;
+}
+
+.pidoc_sh_xmlEntity {
+   color: #008000;
+   background: transparent;
+   font-weight: normal;
+   font-style: normal;
+   text-decoration: none;
+}
+
+.pidoc_sh_xmlCDATA {
+   color: #c71586;
+   background: transparent;
+   font-weight: normal;
+   font-style: normal;
+   text-decoration: none;
+}
