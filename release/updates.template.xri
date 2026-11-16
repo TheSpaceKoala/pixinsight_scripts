@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xri version="1.0">
+   <description>
+      <p>
+      The Space Koala PixInsight Scripts Repository
+    </p>
+   </description>
+   <platform os="all" arch="noarch" version="1.8.9-2:1.9.99">
+      <package fileName="PACKAGE_FILENAME_PENDING" sha1="PACKAGE_SHA1_PENDING" type="script" releaseDate="RELEASE_DATE_PENDING">
+         <title>
+        Documentation and update-package compliance correction
+      </title>
+         <remove>
+        src/scripts/TheSpaceKoala/TelegramEventScript.js,
+        src/scripts/TheSpaceKoala/TelegramEventScript.xsgn,
+        src/scripts/TheSpaceKoala/SendImageToTelegram.js,
+        src/scripts/TheSpaceKoala/SendImageToTelegram.xsgn,
+        doc/scripts/SendImageToTelegram,
+        doc/docs/WBPP Telegram Notification Event Script
+      </remove>
+         <description>
+            <p>Removes all PixInsight-owned doc/pidoc resources from the update payload. No PixInsight-owned files are scheduled for removal.</p>
+            <p>Includes signatures for NormalizeExposureRegion and CenterCrop2200.</p>
+            <p>Documents messaging endpoints, curl and osascript, retained temporary JPEGs, automatic WBPP master-image delivery, Discord configuration, and the Windows TLS retry.</p>
+            <p>Retains the existing WBPP compatibility and notification fixes without changing script behavior.</p>
+         </description>
+      </package>
+   </platform>
+</xri>

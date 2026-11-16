@@ -1,5 +1,6 @@
-#/bin/bash
+#!/bin/bash
 set -e
+export LC_ALL=C
 
 echo "🔄 Rebuilding docs folder for GitHub Pages..."
 
@@ -10,7 +11,10 @@ mkdir docs
 # Copy everything from doc/ into docs/ (all contents, not the doc/ folder itself)
 cp -R doc/. docs/
 
-echo "✅ Copied entire content of doc/ into docs/"
+# PIDoc resources are website-only assets, never update-package payload.
+cp -R .github/pages-assets/pidoc docs/pidoc
+
+echo "✅ Copied documentation and website-only PIDoc assets into docs/"
 
 # Generate index.html in docs/ that lists HTML files only in:
 #   - docs/scripts/*/*.html
@@ -36,14 +40,14 @@ echo "Creating index.html in docs..."
   echo "  <ul>"
   
   # List HTML files in docs/scripts/*/*.html
-  find docs/scripts -mindepth 2 -maxdepth 2 -type f -name "*.html" | while read htmlfile; do
+  find docs/scripts -mindepth 2 -maxdepth 2 -type f -name "*.html" | sort | while IFS= read -r htmlfile; do
       relpath=${htmlfile#docs/}
       label=$(basename "$htmlfile" .html)
       echo "    <li><a href=\"$relpath\">$label</a></li>"
   done
   
   # List HTML files in docs/docs/*/*.html
-  find docs/docs -mindepth 2 -maxdepth 2 -type f -name "*.html" | while read htmlfile; do
+  find docs/docs -mindepth 2 -maxdepth 2 -type f -name "*.html" | sort | while IFS= read -r htmlfile; do
       relpath=${htmlfile#docs/}
       label=$(basename "$htmlfile" .html)
       echo "    <li><a href=\"$relpath\">$label</a></li>"
@@ -93,7 +97,13 @@ for htmlfile in docs/scripts/*/*.html docs/docs/*/*.html; do
     continue
   fi
 
-  sed -i 's|<body>|<body>\n  <div style="position: fixed; top: 10px; left: 80px; background: #f8f8f8; padding: 5px 12px; border-radius: 8px; z-index: 9999;"><a href="../../index.html" style="text-decoration: none; color: #000;">← Back</a></div>|' "$htmlfile"
+  python3 - "$htmlfile" <<'PY'
+from pathlib import Path
+import sys
+page = Path(sys.argv[1])
+back = '<div style="position: fixed; top: 10px; left: 80px; background: #f8f8f8; padding: 5px 12px; border-radius: 8px; z-index: 9999;"><a href="../../index.html" style="text-decoration: none; color: #000;">← Back</a></div>'
+page.write_text(page.read_text(encoding='utf-8').replace('<body>', '<body>\n  ' + back, 1), encoding='utf-8')
+PY
 done
 
 echo "✅ Fixed-position Back buttons added to all HTML files"

@@ -50,6 +50,7 @@
 <li class="pidoc_tocItem"><a href="#__Usage__">8&emsp;Usage</a></li>
 <li class="pidoc_tocItem"><a href="#__Limitations__">9&emsp;Limitations</a></li>
 <li class="pidoc_tocItem"><a href="#__Troubleshooting__">10&emsp;Troubleshooting</a></li>
+<li class="pidoc_tocItem"><a href="#__Network_Programs_and_Storage__">11&emsp;Network, External Programs, and File Storage</a></li>
 </ul>
 </div>
 
@@ -137,7 +138,7 @@
    <h3 class="pidoc_sectionTitle">5&emsp;iMessage Setup</h3>
    <p class="pidoc_sectionToggleButton" onclick="pidoc_toggleSection( 'iMessage_Setup', this );">[hide]</p>
    <div id="iMessage_Setup">
-<p>iMessage setup is the simplest, but it is only available on macOS.</p>
+<p>iMessage is available only on macOS. The script runs <code>osascript</code> (AppleScript) to control <strong>Messages.app</strong>, which must be signed in to iMessage. macOS may ask you to allow PixInsight to control Messages.</p>
 
 <ul class="pidoc_list">
 <li><strong>Recipient</strong>: Enter the destination Apple ID, email address, or phone number that Messages can send to on your Mac.</li>
@@ -235,6 +236,36 @@
    </div>
 </div>
 
+<div class="pidoc_section" id="__Network_Programs_and_Storage__">
+   <h3 class="pidoc_sectionTitle">11&emsp;Network, External Programs, and File Storage</h3>
+   <p class="pidoc_sectionToggleButton" onclick="pidoc_toggleSection( 'Network_Programs_and_Storage', this );">[hide]</p>
+   <div id="Network_Programs_and_Storage">
+
+<p><strong>Network connections and data sent</strong></p>
+<p>Only the selected messaging platform is used for notification delivery. Messages, captions, and JPEG previews are sent to the destination configured by the user.</p>
+<ul class="pidoc_list">
+<li><strong>Telegram</strong>: The script launches <em>curl</em> to make HTTPS POST requests to <code>https://api.telegram.org/bot&lt;BotToken&gt;/sendMessage</code> for text and <code>https://api.telegram.org/bot&lt;BotToken&gt;/sendPhoto</code> for images. Requests include the bot token, destination chat ID, message or caption, and the JPEG when sending an image.</li>
+<li><strong>Pushover</strong>: The script launches <em>curl</em> to make HTTPS POST requests to <code>https://api.pushover.net/1/messages.json</code>. Requests include the application token, user key, message, and an attached JPEG when sending an image.</li>
+<li><strong>Discord</strong>: The script launches <em>curl</em> to POST text or a JPEG with a message to the exact webhook URL saved in the configuration. Use the HTTPS webhook URL copied from Discord; the destination is determined by that URL.</li>
+<li><strong>iMessage (macOS only)</strong>: The script launches <code>osascript -e</code> to execute AppleScript that controls <strong>Messages.app</strong>. Messages.app sends the text and, when applicable, the JPEG to the configured recipient using its signed-in iMessage service. Messages.app handles the network connection; the script does not use curl for iMessage. Messages must be configured, and macOS may request permission for PixInsight to control Messages.</li>
+</ul>
+<p><strong>Windows TLS retry</strong></p>
+<p>For Telegram, Pushover, and Discord, if curl exits with code <strong>35</strong> (a TLS handshake error) on Windows, the script retries the same request once with <code>--ssl-revoke-best-effort</code>. This enables best-effort certificate revocation checking with Windows Schannel; normal TLS certificate verification remains enabled. The option is not added on other operating systems or for other exit codes. If curl rejects the option with exit code 2, the script reports that curl 7.70.0 or newer is required.</p>
+<p><strong>JPEG files outside the PixInsight installation</strong></p>
+<p>Before sending an image, the script exports a JPEG copy into the system temporary directory reported by <code>File.systemTempDirectory</code>. Its location depends on the operating system and environment. The filename depends on the selected platform:</p>
+<ul class="pidoc_list">
+<li>Telegram: <code>TelegramProcessed.jpg</code></li>
+<li>Pushover: <code>PushoverProcessed.jpg</code></li>
+<li>Discord: <code>DiscordProcessed.jpg</code></li>
+<li>iMessage: <code>iMessageProcessed.jpg</code></li>
+</ul>
+<p><strong>These JPEG files are not deleted by the scripts after sending or after a failed send.</strong> A later export for the same platform uses the same filename and can replace the previous preview. Files may remain until the user or operating system removes them. Closing the temporary image window does not delete the exported JPEG. Remove the files manually only after the send has finished, particularly when Messages.app may still be reading an attachment.</p>
+<p><strong>Saved configuration</strong></p>
+<p>The <em>Save Parameters</em> button in SendMessageToPhone stores the selected platform, credentials, recipient, message, and image options in PixInsight's persistent per-user settings store, under keys beginning with <code>SendMessageToPhone/</code>. This is the settings location managed by PixInsight for the current user, outside the installation directory. <em>Reset Parameters</em> removes those saved script settings. If a process icon containing these parameters is saved to a file, that file is stored at the location chosen by the user and can also contain the credentials.</p>
+
+   </div>
+</div>
+
 <hr class="separator"/>
 
 <div id="copyright">
@@ -242,7 +273,7 @@
 </div>
 
 <div id="footer">
-   <p>Generated by the PixInsight Documentation Compiler script version 1.7.1 on 2026-04-06 09:29:26 UTC</p>
+   <p>Originally generated by the PixInsight Documentation Compiler script version 1.7.1 on 2026-04-06 09:29:26 UTC. Documentation revised on 2026-11-10.</p>
 </div>
 <br/>
 <br/>

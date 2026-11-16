@@ -6,9 +6,9 @@
     </p>
    </description>
    <platform os="all" arch="noarch" version="1.8.9-2:1.9.99">
-      <package fileName="TheSpaceKoalaScripts_20260801.zip" sha1="2fea25a3ce0db787e29ca6b5866b104b2259ecf3" type="script" releaseDate="20260801">
+      <package fileName="TheSpaceKoalaScripts_20261110.zip" sha1="cefa9ed756cd8c690fef6c6b3eb311ba7ba1d573" type="script" releaseDate="20261110">
          <title>
-        WBPP reuse-reference and notification validation fixes
+        Documentation and update-package compliance correction
       </title>
          <remove>
         src/scripts/TheSpaceKoala/TelegramEventScript.js,
@@ -19,17 +19,12 @@
         doc/docs/WBPP Telegram Notification Event Script
       </remove>
          <description>
-            <p>
-          Fixes NotificationEventScript validation under WBPP 3.0.1 by removing syntax that is forbidden in its strict V8 execution context.
-            </p>
-            <p>
-          Fixes Measurements failures in NoCodePipelineBuilder and MultiScopeStacker when Reuse Last Registration Reference Frames is enabled by ensuring WBPP reference-frame data is prepared whenever Measurements is scheduled.
-            </p>
-            <p>
-          Includes the previous WBPP 3.0.1 compatibility, notification reliability, Windows curl compatibility, and installer permission fixes.
-            </p>
+            <p>Removes all PixInsight-owned doc/pidoc resources from the update payload. No PixInsight-owned files are scheduled for removal.</p>
+            <p>Includes signatures for NormalizeExposureRegion and CenterCrop2200.</p>
+            <p>Documents messaging endpoints, curl and osascript, retained temporary JPEGs, automatic WBPP master-image delivery, Discord configuration, and the Windows TLS retry.</p>
+            <p>Retains the existing WBPP compatibility and notification fixes without changing script behavior.</p>
          </description>
       </package>
    </platform>
 </xri>
-<Signature developerId="Luca Bartek" timestamp="2026-08-01T20:17:19.755Z" encoding="Base64">K2LY0XqR7fUA7zwhdX30+S+gtZPYna+3OAHHI3x8/pxmSPKFdMquki2PQwTV5re4UVE0fPCHEll4mkDdmrvXAg==</Signature>
+<Signature developerId="Luca Bartek" timestamp="2026-11-10T18:03:54.035Z" encoding="Base64">Gi05UV3rYXO1zk/QLu6IPg7/OVj/hjanXXCNfJoyzdhvQP1GHv5AnffmrwOVt16juK6aXOWqyiLuKP7jLj08Dw==</Signature>

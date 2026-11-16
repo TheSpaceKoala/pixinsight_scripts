@@ -3,7 +3,7 @@
 <head>
    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
    <title>PixInsight Reference Documentation | WBPP Notification Event Script</title>
-   <meta name="keywords" content="WBPP, Telegram, iMessage, Pushover, Notifications, PixInsight, Pipeline, Automation" />
+   <meta name="keywords" content="WBPP, Telegram, Discord, iMessage, Pushover, Notifications, PixInsight, Pipeline, Automation" />
    <meta name="author" content="Luca Bartek" />
    <meta name="description" content="A PixInsight script for sending notifications at key events in the WBPP pipeline." />
    <meta name="robots" content="INDEX,FOLLOW" />
@@ -31,7 +31,7 @@
 <p>A PixInsight script for sending notifications at key events in the WBPP pipeline. <a href="#__contents__">[more]</a></p></div>
 
 <div id="keywords">
-<p><strong>Keywords:</strong> WBPP, Telegram, iMessage, Pushover, Notifications, PixInsight, Pipeline, Automation</p>
+<p><strong>Keywords:</strong> WBPP, Telegram, Discord, iMessage, Pushover, Notifications, PixInsight, Pipeline, Automation</p>
 </div>
 
 <h3 class="pidoc_sectionTitle" id="__toc__">Contents</h3>
@@ -44,6 +44,7 @@
 <li class="pidoc_tocItem"><a href="#__Setting_up_a_Telegram_Bot__">4&emsp;Setting up a Telegram Bot</a></li>
 <li class="pidoc_tocItem"><a href="#__Limitations__">5&emsp;Limitations</a></li>
 <li class="pidoc_tocItem"><a href="#__Troubleshooting__">6&emsp;Troubleshooting</a></li>
+<li class="pidoc_tocItem"><a href="#__Network_Programs_and_Storage__">7&emsp;Network, External Programs, and File Storage</a></li>
 </ul>
 </div>
 
@@ -53,7 +54,7 @@
    <h3 class="pidoc_sectionTitle">1&emsp;Introduction</h3>
    <p class="pidoc_sectionToggleButton" onclick="pidoc_toggleSection( 'Introduction', this );">[hide]</p>
    <div id="Introduction">
-<p>The <strong>Notification Event Script</strong> provides a way to receive real-time notifications during the execution of the <strong>Weighted Batch Preprocessing (WBPP)</strong> pipeline in PixInsight. This script supports multiple messaging platforms, including <em>Telegram</em>, <em>iMessage</em>, and <em>Pushover</em>, to send updates, error messages, and image notifications.</p>
+<p>The <strong>Notification Event Script</strong> provides a way to receive real-time notifications during the execution of the <strong>Weighted Batch Preprocessing (WBPP)</strong> pipeline in PixInsight. This script supports multiple messaging platforms, including <em>Telegram</em>, <em>Discord</em>, <em>iMessage</em>, and <em>Pushover</em>, to send updates, error messages, and image notifications.</p>
 <p>Support for <em>Telegram text-only notifications</em> was originally implemented by <em>Marco Manenti</em>. See his project at <em>https://github.com/verbavolant/eventSendMessageToTelegram</em>.</p>
 <p>Support for <em>Pushover notifications with images</em> was contributed by <em>Brian Weber</em>, whose guide can be found at <em>https://blog.briangweber.com/pushover-setup/</em>.</p>
    </div>
@@ -63,14 +64,15 @@
    <h3 class="pidoc_sectionTitle">2&emsp;Setup</h3>
    <p class="pidoc_sectionToggleButton" onclick="pidoc_toggleSection( 'Setup', this );">[hide]</p>
    <div id="Setup">
-<p>In order to use the <strong>Notification Event Script</strong> with WBPP (Weighted Batch Preprocessing), you first need to configure the notification system you want to use. This is done through the <strong>SendMessageToPhone</strong> script, which currently allows you to select either <strong>Telegram</strong>, <strong>iMessage</strong>, or <strong>Pushover</strong> as the platform to receive notifications.</p>
+<p>In order to use the <strong>Notification Event Script</strong> with WBPP (Weighted Batch Preprocessing), you first need to configure the notification system you want to use. This is done through the <strong>SendMessageToPhone</strong> script, which currently allows you to select <strong>Telegram</strong>, <strong>Discord</strong>, <strong>iMessage</strong>, or <strong>Pushover</strong> as the platform to receive notifications.</p>
 <p>Follow the steps below to configure the notification system:</p>
 <p><strong>Step 1</strong>: Open the <em>SendMessageToPhone</em> script in <em>PixInsight's Script Explorer</em>.</p>
-<p><strong>Step 2</strong>: Select the messaging platform you want to use: <em>Telegram</em>, <em>iMessage</em>, or <em>Pushover</em>. You will see three radio buttons: one for <em>Telegram</em>, one for <em>iMessage</em>, and one for <em>Pushover</em>. Click the radio button next to the platform you want to use.</p>
+<p><strong>Step 2</strong>: Select the messaging platform you want to use: <em>Telegram</em>, <em>Discord</em>, <em>iMessage</em>, or <em>Pushover</em>. Click its radio button.</p>
 <p><strong>Step 3a</strong>: If you selected <em>Telegram</em>, you will have to enter the <em>Telegram Bot Token</em> and <em>Chat ID</em>. To send notifications via <em>Telegram</em>, you'll need to <a href="#telegramBotSetup">Set up your Telegram Bot first</a>. This feature was originally implemented by <em>Marco Manenti</em>, and a standalone version of his script can be found at <em>https://github.com/verbavolant/eventSendMessageToTelegram</em>.</p>
 <p><strong>Step 3b</strong>: If you selected <em>iMessage</em>, enter the <em>Phone Number</em> of the recipient in international format. For <em>iMessage</em>, enter the recipient of the person who will receive the notifications. This is likely your own <em>Apple ID</em> if you'd like to receive the notifications yourself, but technically you could insert any AppleID here. Ensure PixInsight has the rights to execute AppleScript: Run the script standalone once, at which point it will ask for the necessary permissions. Accept.</p>
 <p><strong>Step 3c</strong>: If you selected <em>Pushover</em>, enter your <em>User Key</em> and <em>App Token</em>. To use Pushover, you must create an account at <em>https://pushover.net</em> and register a new application. Copy the credentials and paste them into the appropriate fields. Pushover works across all operating systems and does not rely on a specific platform. Setup instructions and examples are available in <em>Brian Weber’s guide at https://blog.briangweber.com/pushover-setup/</em>.</p>
-<p><strong>Step 4</strong>: Save the configuration by clicking the <em>Save Parameters</em> button. Once you've filled out the necessary fields, click the <em>Save Parameters</em> button to save your settings. This will store the Bot Token, Chat ID, recipient phone number, and other options so that the script can send notifications during the WBPP process.</p>
+<p><strong>Step 3d</strong>: If you selected <em>Discord</em>, create a webhook for the destination channel in <em>Server Settings &gt; Integrations &gt; Webhooks</em>, then paste its HTTPS <em>Webhook URL</em> into SendMessageToPhone. Creating a webhook requires the channel's <em>Manage Webhooks</em> permission. The URL allows posting to that channel and should be kept private.</p>
+<p><strong>Step 4</strong>: Save the configuration by clicking the <em>Save Parameters</em> button. Once you've filled out the necessary fields, click the <em>Save Parameters</em> button to save your settings. This will store the Bot Token, Chat ID, iMessage recipient, Pushover credentials, Discord webhook URL, and other options so that the script can send notifications during the WBPP process.</p>
 <img src="images/configuring_telegramBot.png" alt=""/>
 <p>An example of a Telegram Bot Configuration</p>
    </div>
@@ -88,6 +90,7 @@
 <li>Error message (in case of failure)</li>
 </ul>
 
+<p><strong>Automatic integrated-image delivery</strong>: On the WBPP <em>done</em> event for <em>Integration</em> or <em>FastIntegration</em>, the event script opens the integrated master light from WBPP's output directory. On the <em>done</em> event for <em>Drizzle Integration</em>, it opens the drizzle master instead. It then exports and sends a JPEG preview with a caption through the selected messaging platform. The preview is automatically stretched with an unlinked stretch; large images may be downsampled by the platform-specific sender. This happens automatically when these integration events finish, without a separate send command. The original master file is read; it is not the attachment uploaded. The opened master image window is left open in PixInsight.</p>
 <p>Example messages:</p>
 
 <pre class="code">WBPP started</pre>
@@ -159,8 +162,8 @@
    <div id="Limitations">
 
 <ul class="pidoc_list">
-<li>The script uses the <em>curl</em> utility to interact with Telegram and Pushover. Ensure your system has access to the internet and <em>curl</em> is available.</li>
-<li>iMessage sending is only available on macOS. If you're running this script on Windows or Linux, use Telegram or Pushover instead.</li>
+<li>The script uses the <em>curl</em> utility to interact with Telegram, Discord, and Pushover. Ensure your system has access to the internet and <em>curl</em> is available.</li>
+<li>iMessage sending is only available on macOS. If you're running this script on Windows or Linux, use Telegram, Discord, or Pushover instead.</li>
 <li>Pushover imposes a limit of 2.5MB on image attachments. If your image is too large, the script will downsample it. Only JPEG format is supported.</li>
 <li>Notifications may be delayed if there is network congestion or if the bot/token/user credentials are incorrect.</li>
 </ul>
@@ -174,11 +177,42 @@
    <div id="Troubleshooting">
 
 <ul class="pidoc_list">
-<li>If no notifications are received, ensure the <em>Telegram Bot Token</em> and <em>Chat ID</em>, <em>iMessage Recipient</em>, or <em>Pushover credentials</em> are entered correctly.</li>
+<li>If no notifications are received, ensure the <em>Telegram Bot Token</em> and <em>Chat ID</em>, <em>Discord Webhook URL</em>, <em>iMessage Recipient</em>, or <em>Pushover credentials</em> are entered correctly.</li>
 <li>Check if the <em>curl</em> utility is working properly on your system. You can test this by sending a test message manually using the command line.</li>
 <li>If using Pushover, ensure that the image is smaller than 2.5MB, and that it is being saved as a valid JPEG.</li>
 <li>If you receive a <em>&quot;No valid target image found&quot;</em> error, ensure there is an active image in PixInsight when running the script.</li>
 </ul>
+
+   </div>
+</div>
+
+<div class="pidoc_section" id="__Network_Programs_and_Storage__">
+   <h3 class="pidoc_sectionTitle">7&emsp;Network, External Programs, and File Storage</h3>
+   <p class="pidoc_sectionToggleButton" onclick="pidoc_toggleSection( 'Network_Programs_and_Storage', this );">[hide]</p>
+   <div id="Network_Programs_and_Storage">
+<p>This event script reads the configuration saved by <strong>SendMessageToPhone</strong> and uses the same messaging services, external programs, and temporary JPEG filenames described below. Text notifications describe WBPP operations, status, and errors; integrated-image previews are sent automatically as described in Usage.</p>
+
+<p><strong>Network connections and data sent</strong></p>
+<p>Only the selected messaging platform is used for notification delivery. Messages, captions, and JPEG previews are sent to the destination configured by the user.</p>
+<ul class="pidoc_list">
+<li><strong>Telegram</strong>: The script launches <em>curl</em> to make HTTPS POST requests to <code>https://api.telegram.org/bot&lt;BotToken&gt;/sendMessage</code> for text and <code>https://api.telegram.org/bot&lt;BotToken&gt;/sendPhoto</code> for images. Requests include the bot token, destination chat ID, message or caption, and the JPEG when sending an image.</li>
+<li><strong>Pushover</strong>: The script launches <em>curl</em> to make HTTPS POST requests to <code>https://api.pushover.net/1/messages.json</code>. Requests include the application token, user key, message, and an attached JPEG when sending an image.</li>
+<li><strong>Discord</strong>: The script launches <em>curl</em> to POST text or a JPEG with a message to the exact webhook URL saved in the configuration. Use the HTTPS webhook URL copied from Discord; the destination is determined by that URL.</li>
+<li><strong>iMessage (macOS only)</strong>: The script launches <code>osascript -e</code> to execute AppleScript that controls <strong>Messages.app</strong>. Messages.app sends the text and, when applicable, the JPEG to the configured recipient using its signed-in iMessage service. Messages.app handles the network connection; the script does not use curl for iMessage. Messages must be configured, and macOS may request permission for PixInsight to control Messages.</li>
+</ul>
+<p><strong>Windows TLS retry</strong></p>
+<p>For Telegram, Pushover, and Discord, if curl exits with code <strong>35</strong> (a TLS handshake error) on Windows, the script retries the same request once with <code>--ssl-revoke-best-effort</code>. This enables best-effort certificate revocation checking with Windows Schannel; normal TLS certificate verification remains enabled. The option is not added on other operating systems or for other exit codes. If curl rejects the option with exit code 2, the script reports that curl 7.70.0 or newer is required.</p>
+<p><strong>JPEG files outside the PixInsight installation</strong></p>
+<p>Before sending an image, the script exports a JPEG copy into the system temporary directory reported by <code>File.systemTempDirectory</code>. Its location depends on the operating system and environment. The filename depends on the selected platform:</p>
+<ul class="pidoc_list">
+<li>Telegram: <code>TelegramProcessed.jpg</code></li>
+<li>Pushover: <code>PushoverProcessed.jpg</code></li>
+<li>Discord: <code>DiscordProcessed.jpg</code></li>
+<li>iMessage: <code>iMessageProcessed.jpg</code></li>
+</ul>
+<p><strong>These JPEG files are not deleted by the scripts after sending or after a failed send.</strong> A later export for the same platform uses the same filename and can replace the previous preview. Files may remain until the user or operating system removes them. Closing the temporary image window does not delete the exported JPEG. Remove the files manually only after the send has finished, particularly when Messages.app may still be reading an attachment.</p>
+<p><strong>Saved configuration</strong></p>
+<p>The <em>Save Parameters</em> button in SendMessageToPhone stores the selected platform, credentials, recipient, message, and image options in PixInsight's persistent per-user settings store, under keys beginning with <code>SendMessageToPhone/</code>. This is the settings location managed by PixInsight for the current user, outside the installation directory. <em>Reset Parameters</em> removes those saved script settings. If a process icon containing these parameters is saved to a file, that file is stored at the location chosen by the user and can also contain the credentials.</p>
 
    </div>
 </div>
@@ -190,7 +224,7 @@
 </div>
 
 <div id="footer">
-   <p>Generated by the PixInsight Documentation Compiler script version 1.7.1 on 2026-04-06 09:29:26 UTC</p>
+   <p>Originally generated by the PixInsight Documentation Compiler script version 1.7.1 on 2026-04-06 09:29:26 UTC. Documentation revised on 2026-11-10.</p>
 </div>
 <br/>
 <br/>

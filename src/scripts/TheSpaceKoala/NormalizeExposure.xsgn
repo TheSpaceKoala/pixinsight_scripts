@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+PixInsight XML Code Signature Format - XSGN version 1.0
+Created with PixInsight software - https://pixinsight.com/
+-->
+<xsgn version="1.0" xmlns="http://www.pixinsight.com/xsgn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pixinsight.com/xsgn http://pixinsight.com/xsgn/xsgn-1.0.xsd">
+   <CreationTime>2026-11-10T17:08:38.454Z</CreationTime>
+   <Signature version="1.0" scriptId="NormalizeExposureRegion" developerId="Luca Bartek">
+      <Timestamp>2026-11-10T17:08:38.454Z</Timestamp>
+      <CodeSignature encoding="Base64">sZf4LEfb82OwoEirswdPD3RpPnm++45v4aWC2kkD+f+IJugigkL60kRyCzLc7vLWHLW+KFdWjzKv0Do8D3PcCg==</CodeSignature>
+   </Signature>
+</xsgn>
